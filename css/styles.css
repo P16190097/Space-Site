@@ -25,6 +25,11 @@ h2 {
   color: #b245f0
 }
 
+#navController {
+  transition: content 0.5s;
+  font-size: x-large;
+}
+
 /********************************/
 /*     color styles             */
 /********************************/
@@ -96,6 +101,11 @@ main {
   body {
     background-color: #171c25;
   } 
+
+  main {
+    padding: 0px 270px;
+  }
+
 }
 
 
@@ -108,5 +118,6 @@ main {
 
   body {
     background-color: #171c25;
-  } 
+  }
+  
 }
