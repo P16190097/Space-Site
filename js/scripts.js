@@ -5,13 +5,13 @@ let navOpen = false;
 function toggleNav() {
     if ((getWidth()) >= 768) {
         if (navOpen) {
-            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("mySidenav").style.left = "-250px";
             document.getElementById("main").style.marginLeft = "0";
             document.getElementById("navController").innerHTML = '<i class="fa fa-angle-right"></i>';
             navOpen = false;
         }
         else {
-            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("mySidenav").style.left = "0";
             document.getElementById("main").style.marginLeft = "250px";
             document.getElementById("navController").innerHTML = '<i class="fa fa-angle-left"></i>';
             navOpen = true;
