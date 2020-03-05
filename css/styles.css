@@ -3,9 +3,13 @@
 /* applies to screens smaller than 500px (first breakpoint) */
 /* and above unless overwritten below */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: arial, sans-serif;
-  background-color: #171c25;
+  background-color: #000;
   color: #fff;
 } 
 
@@ -28,6 +32,40 @@ h2 {
 #navController {
   transition: content 0.5s;
   font-size: x-large;
+  float: right;
+}
+
+.content-width {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.body-container {
+  background-color: #171c25;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.logo-img {
+  width: 56.25px;
+  height: 46.5px; 
+  margin: 0 auto;
+}
+
+/********************************/
+/*        header styles         */
+/********************************/
+
+.header-logo {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /********************************/
@@ -50,45 +88,54 @@ h2 {
   color: goldenrod;
 }
 
-/*******************************/
-/*     test styles        */
+/********************************/
+/*        test styles           */
 /********************************/
 
-.sidenav {
-  height: 100%;
-  width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: -250px;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+.topnav {
+  overflow: hidden;
+  background-color: #333;
 }
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+  font-size: 17px;
 }
 
-.sidenav a:hover {
-  color: #f1f1f1;
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
-main {
-  transition: margin-left .5s;
-  padding: 16px;
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
+
+
+
+.topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+
+.topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
 
 
 
@@ -99,11 +146,19 @@ main {
   /* applies to screens wider than 499px */
   
   body {
-    background-color: #171c25;
+    background-color: #000;
   } 
 
   main {
     padding: 0px 270px;
+  }
+
+  .topnav a {
+    display: block;
+  }
+
+  .topnav a.icon {
+    display: none;
   }
 
 }
@@ -117,7 +172,21 @@ main {
   /* applies to screens wider than 999px */
 
   body {
-    background-color: #171c25;
+    background-color: #000;
+  }
+
+  /********************************/
+  /*     header styles            */
+  /********************************/
+
+  .header-logo {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .logo-img {
+    width: 112.5px;
+    height: 93px; 
   }
   
 }

@@ -1,33 +1,17 @@
 let navOpen = false;
 
 function toggleNav() {
-    if ((getWidth()) >= 768) {
-        if (navOpen) {
-            document.querySelector("nav").style.left = "-250px";
-            //document.querySelector("main").style.marginLeft = "0";
-            document.getElementById("navController").innerHTML = '<i class="fa fa-angle-right"></i>';
-            navOpen = false;
-        }
-        else {
-            document.querySelector("nav").style.left = "0";
-            //document.querySelector("main").style.marginLeft = "250px";
-            document.getElementById("navController").innerHTML = '<i class="fa fa-angle-left"></i>';
-            navOpen = true;
-        }
+    if (navOpen) {
+        document.querySelector("nav").style.left = "-220px";
+        //document.querySelector("main").style.marginLeft = "0";
+        document.getElementById("navController").innerHTML = '<i class="fa fa-angle-right"></i>';
+        navOpen = false;
     }
     else {
-        if (navOpen) {
-            document.querySelector("nav").style.width = "0";
-            document.querySelector("main").style.marginLeft = "0";
-            document.getElementById("navController").innerHTML = '<i class="fa fa-angle-right"></i>';
-            navOpen = false;
-        }
-        else {
-            document.querySelector("nav").style.width = "250px";
-            document.querySelector("main").style.marginLeft = "250px";
-            document.getElementById("navController").innerHTML = '<i class="fa fa-angle-left"></i>';
-            navOpen = true;
-        }
+        document.querySelector("nav").style.left = "0";
+        //document.querySelector("main").style.marginLeft = "250px";
+        document.getElementById("navController").innerHTML = '<i class="fa fa-angle-left"></i>';
+        navOpen = true;
     }
 
 }
@@ -50,4 +34,13 @@ const getHeight = () => {
         document.documentElement.offsetHeight,
         document.documentElement.clientHeight
     );
+}
+
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
 }
