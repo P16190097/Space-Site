@@ -34,7 +34,8 @@ function toggelNavbar() {
 }
 
 function setNav() {
-    if (getWidth() >= 768) {
-        document.getElementById("topnav").className = 'topnav';
+    x = document.getElementById("topnav");
+    if (getWidth() >= 768 && x.className === 'topnav responsive') {
+        x.className = 'topnav';
     }
 }
