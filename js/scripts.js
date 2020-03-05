@@ -1,20 +1,6 @@
 let navOpen = false;
 
-function toggleNav() {
-    if (navOpen) {
-        document.querySelector("nav").style.left = "-220px";
-        //document.querySelector("main").style.marginLeft = "0";
-        document.getElementById("navController").innerHTML = '<i class="fa fa-angle-right"></i>';
-        navOpen = false;
-    }
-    else {
-        document.querySelector("nav").style.left = "0";
-        //document.querySelector("main").style.marginLeft = "250px";
-        document.getElementById("navController").innerHTML = '<i class="fa fa-angle-left"></i>';
-        navOpen = true;
-    }
-
-}
+window.onresize = setNav();
 
 const getWidth = () => {
     return Math.max(
@@ -36,11 +22,19 @@ const getHeight = () => {
     );
 }
 
-function myFunction() {
-    var x = document.getElementById("myTopnav");
+function toggelNavbar() {
+    var x = document.getElementById("topnav");
     if (x.className === "topnav") {
         x.className += " responsive";
+        //x.style.maxHeight('198px');
     } else {
         x.className = "topnav";
+        //x.style.maxHeight('0px');
+    }
+}
+
+function setNav() {
+    if (getWidth() >= 768) {
+        document.getElementById("topnav").className = 'topnav';
     }
 }

@@ -45,14 +45,6 @@ h2 {
   background-color: #171c25;
 }
 
-.vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
 .logo-img {
   width: 56.25px;
   height: 46.5px; 
@@ -95,6 +87,8 @@ h2 {
 .topnav {
   overflow: hidden;
   background-color: #333;
+  max-height: 0;
+  transition: max-height 0.5s ease; 
 }
 
 .topnav a {
@@ -111,31 +105,29 @@ h2 {
   color: black;
 }
 
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
+
+
+
+.topnav a {
+  /* display: none; */
+  /* max-height: 0;
+  transition: max-height 0.5s ease;  */
+  display: block;
+
+  float: none;
+  text-align: left;
 }
 
+a.nav-Icon {
+  float: right;
+  display: block;
+  margin: 20px;
+}
 
-
-
-.topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-
-.topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
+.topnav.responsive {
+  /* position: relative; */
+  max-height: 192px;
+}
 
 
 
@@ -153,11 +145,17 @@ h2 {
     padding: 0px 270px;
   }
 
-  .topnav a {
-    display: block;
+  .topnav {
+    max-height: 192px;
   }
 
-  .topnav a.icon {
+  .topnav a {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+  }
+
+  a.nav-Icon {
     display: none;
   }
 
