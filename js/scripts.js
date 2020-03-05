@@ -1,36 +1,6 @@
 let navOpen = false;
 
-function toggleNav() {
-    if ((getWidth()) >= 768) {
-        if (navOpen) {
-            document.querySelector("nav").style.left = "-250px";
-            //document.querySelector("main").style.marginLeft = "0";
-            document.getElementById("navController").innerHTML = '<i class="fa fa-angle-right"></i>';
-            navOpen = false;
-        }
-        else {
-            document.querySelector("nav").style.left = "0";
-            //document.querySelector("main").style.marginLeft = "250px";
-            document.getElementById("navController").innerHTML = '<i class="fa fa-angle-left"></i>';
-            navOpen = true;
-        }
-    }
-    else {
-        if (navOpen) {
-            document.querySelector("nav").style.width = "0";
-            document.querySelector("main").style.marginLeft = "0";
-            document.getElementById("navController").innerHTML = '<i class="fa fa-angle-right"></i>';
-            navOpen = false;
-        }
-        else {
-            document.querySelector("nav").style.width = "250px";
-            document.querySelector("main").style.marginLeft = "250px";
-            document.getElementById("navController").innerHTML = '<i class="fa fa-angle-left"></i>';
-            navOpen = true;
-        }
-    }
-
-}
+window.onresize = setNav();
 
 const getWidth = () => {
     return Math.max(
@@ -38,7 +8,7 @@ const getWidth = () => {
         document.documentElement.scrollWidth,
         document.body.offsetWidth,
         document.documentElement.offsetWidth,
-        document.documentElement.clientWidth
+        document.documentElement.clientWidth,
     );
 }
 
@@ -48,6 +18,24 @@ const getHeight = () => {
         document.documentElement.scrollHeight,
         document.body.offsetHeight,
         document.documentElement.offsetHeight,
-        document.documentElement.clientHeight
+        document.documentElement.clientHeight,
     );
+}
+
+function toggelNavbar() {
+    var x = document.getElementById("topnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+        //x.style.maxHeight('198px');
+    } else {
+        x.className = "topnav";
+        //x.style.maxHeight('0px');
+    }
+}
+
+const setNav = () => {
+    x = document.getElementById("topnav");
+    if (getWidth() >= 768 && x.className === 'topnav responsive') {
+        x.className = 'topnav';
+    }
 }
