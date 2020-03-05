@@ -8,7 +8,7 @@ const getWidth = () => {
         document.documentElement.scrollWidth,
         document.body.offsetWidth,
         document.documentElement.offsetWidth,
-        document.documentElement.clientWidth
+        document.documentElement.clientWidth,
     );
 }
 
@@ -18,7 +18,7 @@ const getHeight = () => {
         document.documentElement.scrollHeight,
         document.body.offsetHeight,
         document.documentElement.offsetHeight,
-        document.documentElement.clientHeight
+        document.documentElement.clientHeight,
     );
 }
 
@@ -33,7 +33,7 @@ function toggelNavbar() {
     }
 }
 
-function setNav() {
+const setNav = () => {
     x = document.getElementById("topnav");
     if (getWidth() >= 768 && x.className === 'topnav responsive') {
         x.className = 'topnav';

@@ -9,7 +9,7 @@
 
 body {
   font-family: arial, sans-serif;
-  background-color: #000;
+  background-color: #101010;
   color: #fff;
 } 
 
@@ -49,6 +49,7 @@ h2 {
   width: 56.25px;
   height: 46.5px; 
   margin: 0 auto;
+  display: block;
 }
 
 /********************************/
@@ -58,6 +59,10 @@ h2 {
 .header-logo {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.site-header {
+  border-bottom: 1px solid #1d1d1d;
 }
 
 /********************************/
@@ -85,9 +90,11 @@ h2 {
 /********************************/
 
 .topnav {
-  overflow: hidden;
-  background-color: #000;
+  overflow-y: hidden;
+  background-color: #101010;
   max-height: 0;
+  position: relative;
+  right: -25px;
   transition: max-height 0.5s ease; 
 }
 
@@ -105,26 +112,20 @@ h2 {
   color: #b1861b;
 }
 
-.topnav a.active {
-  border-bottom: #daa520 solid 2px;
-}
-
-
 .topnav a {
   display: block;
-
   float: none;
-  text-align: left;
+  text-align: center;
 }
 
 a.nav-Icon {
   float: right;
-  display: block;
   margin: 20px;
+  position: relative;
+  bottom: 55px;
 }
 
 .topnav.responsive {
-  /* position: relative; */
   max-height: 192px;
 }
 
@@ -137,11 +138,12 @@ a.nav-Icon {
   /* applies to screens wider than 499px */
   
   body {
-    background-color: #000;
+    background-color: #101010;
   } 
 
   .topnav {
     max-height: 192px;
+    right: unset;
   }
 
   .topnav a {
@@ -150,8 +152,23 @@ a.nav-Icon {
     text-align: center;
   }
 
+  .topnav a.active {
+    border-bottom: #daa520 solid 2px;
+  }
+
   a.nav-Icon {
     display: none;
+  }
+
+  .header-logo {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .logo-img {
+    width: 112.5px;
+    height: 93px; 
+    margin: initial;
   }
 
 }
@@ -165,21 +182,11 @@ a.nav-Icon {
   /* applies to screens wider than 999px */
 
   body {
-    background-color: #000;
+    background-color: #101010;
   }
 
   /********************************/
   /*     header styles            */
   /********************************/
-
-  .header-logo {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  .logo-img {
-    width: 112.5px;
-    height: 93px; 
-  }
   
 }
