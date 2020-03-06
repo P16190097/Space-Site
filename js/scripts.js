@@ -1,4 +1,7 @@
-let navOpen = false;
+
+/***********************************************/
+/* generic functions for getting current page dimensions in px  */
+/***********************************************/
 
 const getWidth = () => {
     return Math.max(
@@ -20,7 +23,11 @@ const getHeight = () => {
     );
 }
 
-function toggelNavbar() {
+/***********************************************/
+/*   toggle responsive navbar for mobile view  */
+/***********************************************/
+
+const toggelNavbar = () => {
     var x = document.getElementById("topnav");
     if (x.className === "topnav") {
         x.className += " responsive";
@@ -31,6 +38,12 @@ function toggelNavbar() {
     }
 }
 
+document.getElementById("navToggle").addEventListener("click", toggelNavbar);
+
+/***********************************************/
+/* reset the responsive navbar on page resize  */
+/***********************************************/
+
 const setNav = () => {
     x = document.getElementById("topnav");
     if (getWidth() >= 768 && x.className === 'topnav responsive') {
@@ -40,9 +53,14 @@ const setNav = () => {
 
 window.onresize = setNav();
 
+/***********************************************/
+/*     perform HTTP GET requests via AJAX      */
+/***********************************************/
 
 const ajaxGetRequest = (url, setContent) => {
     var xmlhttp = new XMLHttpRequest();
+
+    document.getElementById("loader").className = 'loader-wrapper';
 
     xmlhttp.onreadystatechange = () => {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
@@ -51,11 +69,12 @@ const ajaxGetRequest = (url, setContent) => {
                 setContent(JSON.parse(xmlhttp.responseText));
             }
             else if (xmlhttp.status == 400) {
-                alert('There was an error 400');
+                console.log('There was an error 400');
             }
             else {
-                alert('something else other than 200 was returned');
+                console.log('something else other than 200 was returned');
             }
+            document.getElementById("loader").className += ' hidden';
         }
     };
 
@@ -63,9 +82,10 @@ const ajaxGetRequest = (url, setContent) => {
     xmlhttp.send();
 }
 
+const demoUrl = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`
 const setImg = (img) => {
-    document.getElementById("main").innerHTML = `<img src="${img.url}" class="logo-img" />`;
+    document.getElementById("img").innerHTML = `<img src="${img.url}" class="logo-img" />`;
 }
 
-const demoUrl = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`
-ajaxGetRequest(demoUrl, setImg);
+//ajaxGetRequest(demoUrl, setImg);
+
