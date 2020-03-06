@@ -47,9 +47,7 @@ const ajaxGetRequest = (url, setContent) => {
     xmlhttp.onreadystatechange = () => {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
             if (xmlhttp.status == 200) {
-                alert('Request success');
                 console.log(JSON.parse(xmlhttp.responseText));
-                //document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
                 setContent(JSON.parse(xmlhttp.responseText));
             }
             else if (xmlhttp.status == 400) {
@@ -66,7 +64,7 @@ const ajaxGetRequest = (url, setContent) => {
 }
 
 const setImg = (img) => {
-    document.getElementById("main").innerHTML = `<img src="${img.url}" />`;
+    document.getElementById("main").innerHTML = `<img src="${img.url}" class="logo-img" />`;
 }
 
 const demoUrl = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`
