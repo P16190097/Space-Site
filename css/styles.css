@@ -76,7 +76,11 @@ h2 {
   flex-shrink: 0;
 }
 
-.body-item-1 {
+.body-item {
+
+}
+
+.grey {
   background-color: #252525;
 }
 
@@ -110,7 +114,7 @@ h2 {
 }
 
 .blue {
-  color: lightskyblue;
+  color: #0078d3;
 }
 
 .green {
