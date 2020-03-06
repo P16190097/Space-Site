@@ -27,7 +27,7 @@ const getHeight = () => {
 /*   toggle responsive navbar for mobile view  */
 /***********************************************/
 
-function toggelNavbar() {
+const toggelNavbar = () => {
     var x = document.getElementById("topnav");
     if (x.className === "topnav") {
         x.className += " responsive";
@@ -37,6 +37,8 @@ function toggelNavbar() {
         //x.style.maxHeight('0px');
     }
 }
+
+document.getElementById("navToggle").addEventListener("click", toggelNavbar);
 
 /***********************************************/
 /* reset the responsive navbar on page resize  */
@@ -77,11 +79,12 @@ const ajaxGetRequest = (url, setContent) => {
     xmlhttp.send();
 }
 
+const demoUrl = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`
 const setImg = (img) => {
     document.getElementById("main").innerHTML = `<img src="${img.url}" class="logo-img" />`;
+    document.getElementById("loader").className += ' hidden';
 }
 
-const demoUrl = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`
 ajaxGetRequest(demoUrl, setImg);
 
 /***********************************************/
