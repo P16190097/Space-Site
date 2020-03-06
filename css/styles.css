@@ -102,6 +102,7 @@ h2 {
 }
 
 .site-header {
+  max-height: 75px;
   border-bottom: 1px solid #1d1d1d;
 }
 
@@ -158,11 +159,14 @@ h2 {
   text-align: center;
 }
 
-a.nav-Icon {
+a.nav-icon {
   float: right;
-  margin: 20px;
+  margin: 15px;
   position: relative;
   bottom: 55px;
+  border: grey solid 1px;
+  border-radius: 25%;
+  padding: 10px;
 }
 
 .topnav.responsive {
@@ -258,6 +262,10 @@ a.nav-Icon {
     background-color: #101010;
   } 
 
+  .site-header {
+    max-height: initial;
+  }
+
   .topnav {
     max-height: 192px;
     right: unset;
@@ -273,7 +281,7 @@ a.nav-Icon {
     border-bottom: #0066b2 solid 2px;
   }
 
-  a.nav-Icon {
+  a.nav-icon {
     display: none;
   }
 
