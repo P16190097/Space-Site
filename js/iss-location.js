@@ -23,9 +23,9 @@ const ISSIcon = L.icon({
 let iss = L.marker([0, 0], { icon: ISSIcon }).addTo(map);
 let isscirc = L.circle([0, 0], 2200e3, { color: "#c22", opacity: 0.3, weight: 1, fillColor: "#c22", fillOpacity: 0.1, radius: 200 }).addTo(map);
 
-/***********************************************/
-/*     perform HTTP GET requests via AJAX      */
-/***********************************************/
+/******************************************************************/
+/*    perform HTTP GET requests via AJAX  and update map plots    */
+/******************************************************************/
 
 const getISSLocation = () => {
     let xmlhttp = new XMLHttpRequest();
