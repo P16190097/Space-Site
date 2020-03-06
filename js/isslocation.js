@@ -21,7 +21,8 @@ const ISSIcon = L.icon({
 });
 
 const iss = L.marker([0, 0], { icon: ISSIcon }).addTo(map);
-const isscirc = L.circle([0, 0], 2200e3, { color: "#c22", opacity: 0.3, weight: 1, fillColor: "#c22", fillOpacity: 0.1, radius: 500 }).addTo(map);
+const isscirc = L.circle([0, 0], 2200e3, { color: "#c22", opacity: 0.3, weight: 1, fillColor: "#c22", fillOpacity: 0.1 }).addTo(map);
+isscirc.setRadius(700000);
 
 /******************************************************************/
 /*    perform HTTP GET requests via AJAX  and update map plots    */
