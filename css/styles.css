@@ -62,7 +62,7 @@ h2 {
 
 .body-container {
   flex: 1 0 auto;
-  margin-bottom: 120px;
+  /* margin-bottom: 120px; */
   background-color: #101010;
 }
 
