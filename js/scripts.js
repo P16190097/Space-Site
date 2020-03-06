@@ -60,6 +60,8 @@ window.onresize = setNav();
 const ajaxGetRequest = (url, setContent) => {
     var xmlhttp = new XMLHttpRequest();
 
+    document.getElementById("loader").className = 'loader-wrapper';
+
     xmlhttp.onreadystatechange = () => {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
             if (xmlhttp.status == 200) {
@@ -72,6 +74,7 @@ const ajaxGetRequest = (url, setContent) => {
             else {
                 console.log('something else other than 200 was returned');
             }
+            document.getElementById("loader").className += ' hidden';
         }
     };
 
@@ -81,13 +84,8 @@ const ajaxGetRequest = (url, setContent) => {
 
 const demoUrl = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`
 const setImg = (img) => {
-    document.getElementById("main").innerHTML = `<img src="${img.url}" class="logo-img" />`;
-    document.getElementById("loader").className += ' hidden';
+    document.getElementById("img").innerHTML = `<img src="${img.url}" class="logo-img" />`;
 }
 
-ajaxGetRequest(demoUrl, setImg);
-
-/***********************************************/
-/*             HTML5 canvas script             */
-/***********************************************/
+//ajaxGetRequest(demoUrl, setImg);
 

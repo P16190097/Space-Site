@@ -26,16 +26,16 @@
   <nav class="site-nav">
     <div class="content-width">
       <div class="topnav" id="topnav">
-        <a href="#home" class="active">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a href="./index.html" class="active">Home</a>
+        <a href="#news">History</a>
+        <a href="#contact">Projects</a>
+        <a href="./issLocation.html">ISS Tracker</a>
       </div>
     </div>
   </nav>
 
   <!-- loading spinner markup -->
-  <div id="loader" class="loader-wrapper">
+  <div id="loader" class="loader-wrapper hidden">
     <div class="lds-grid">
       <div></div>
       <div></div>
@@ -49,19 +49,24 @@
     </div>
   </div>
 
-  <div class="body-container">
-    <main id="main" class="content content-width">
-      <h1>Hello World</h1>
-    </main>
-  </div>
+  <main id="main" class="body-container">
+    <div class="body-item-1">
+      <div id="star-canvas-wrapper" class="content content-width">
+        <canvas id="star-canvas" class="star-canvas">dsfsdf</canvas>
+      </div>
+    </div>
+  </main>
 
-  <footer>
+  <footer class="footer">
     <div class="footer-container">
       <span>© 2019 - 2020 by Joshua Mayo</span>
     </div>
   </footer>
 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEc4AKFZ8fX8xRUDB9XbGcFbPLPazvuDY&callback=initMap"
+    async defer></script>
   <script src="js/scripts.js"></script>
+  <script src="js/iss-location.js"></script>
 </body>
 
 </html>
