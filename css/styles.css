@@ -11,6 +11,7 @@ body {
   font-family: arial, sans-serif;
   background-color: #101010;
   color: #fff;
+  margin: 0;
 } 
 
 h1, a {
@@ -50,6 +51,23 @@ h2 {
   height: 46.5px; 
   margin: 0 auto;
   display: block;
+}
+
+.body-container {
+  margin-bottom: 120px;
+}
+
+.footer-container {
+  padding: 51px;
+}
+
+footer {
+  background-color: #000;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+  color: #fff;
 }
 
 /********************************/
@@ -128,8 +146,6 @@ a.nav-Icon {
 .topnav.responsive {
   max-height: 192px;
 }
-
-
 
 /* TABLET STYLES */
 
