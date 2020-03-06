@@ -16,10 +16,18 @@ body {
   flex-direction: column;
   height: 100vh;
   font-family: arial, sans-serif;
-  background-color: #101010;
+  background-color: #252525;
   color: #fff;
   margin: 0;
 } 
+
+header {
+  background-color: #101010;
+}
+
+nav {
+  background-color: #101010;
+}
 
 h1, a {
   color: #f035a0
@@ -50,7 +58,12 @@ h2 {
 .content-width {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 20px;
+}
+
+.content-text {
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .logo-img {
@@ -63,7 +76,7 @@ h2 {
 .body-container {
   flex: 1 0 auto;
   /* margin-bottom: 120px; */
-  background-color: #101010;
+  background-color: #252525;
 }
 
 .footer-container {
@@ -84,12 +97,21 @@ h2 {
   background-color: #252525;
 }
 
+.dark {
+  background-color: #101010;
+}
+
 .star-canvas {
   background-color: #000;
 }
 
 #mapid {
   height: 400px;
+}
+
+.page-header {
+  margin: 0;
+  padding: 25px 0;
 }
 
 /********************************/
