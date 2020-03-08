@@ -3,6 +3,11 @@
 /* applies to screens smaller than 500px (first breakpoint) */
 /* and above unless overwritten below */
 
+@font-face {
+  font-family: nasalization;
+  src: url('./fonts/nasalization/nasalizationrg.ttf');
+}
+
 * {
   box-sizing: border-box;
 }
@@ -27,6 +32,10 @@ header {
 
 nav {
   background-color: #101010;
+}
+
+h1 {
+  font-family: nasalization;
 }
 
 h1, a {
@@ -114,6 +123,10 @@ h2 {
   padding: 25px 0;
 }
 
+/********************************/
+/*        hero bar styles       */
+/********************************/
+
 .hero-img {
   min-height: 450px;
   background: url('../img/lego-zero-g-astronaut-on-the-iss.jpg') no-repeat center center fixed;
@@ -151,6 +164,27 @@ h2 {
 
 .hero-link:hover {
   background-color: #105bd8;
+}
+
+/********************************/
+/*       home grid styles       */
+/********************************/
+
+.grid-item {
+  float: left;
+  width: 33%;
+  height: 400px;
+  border-right: #252525 1px solid;
+  background-color: #101010;
+  transition: background-color ease 0.2s;
+}
+
+.grid-item:hover {
+  background-color: #0a0a0a;
+}
+
+.grid-item-content {
+  padding: 40px;
 }
 
 /********************************/
