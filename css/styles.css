@@ -190,6 +190,11 @@ h1 {
   padding: 40px;
 }
 
+.grid-item-content h1 {
+  font-size: 1.7em;
+  min-height: 120px;
+}
+
 .grid-item-content p {
   text-align: center;
 }
@@ -376,6 +381,10 @@ a.nav-icon {
     background-color: #101010;
   } 
 
+  .body-container {
+    padding-bottom: 30px;
+  }
+
   .site-header {
     max-height: initial;
   }
@@ -416,10 +425,14 @@ a.nav-icon {
 
   .grid-item {
     float: left;
-    width: 33%;
-    margin: 0 0 40px 0;
+    width: calc(100%  /3);
+    margin: unset;
     border: unset;
     border-right: #252525 1px solid;
+  }
+
+  .grid-item-content h1 {
+    min-height: 130px;
   }
 
   .grid-img {
@@ -452,6 +465,10 @@ a.nav-icon {
   .grid-img {
     max-height: 300px;
     max-width: 300px;
+  }
+
+  .grid-item-content h1 {
+    min-height: 95px;
   }
 
   /********************************/
