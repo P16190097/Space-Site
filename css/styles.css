@@ -39,18 +39,6 @@ h1 {
   color: #0078d3;
 }
 
-h2 {
-  color: #b245f0
-}
-
-.primary-color {
-  color: #f035a0
-}
-
-.secondary-color {
-  color: #b245f0
-}
-
 .hidden {
   display: none;
 }
@@ -118,6 +106,14 @@ h2 {
 .page-header {
   margin: 0;
   padding: 25px 0;
+}
+
+.content-list {
+  line-height: 20px;
+}
+
+.content-list li {
+  padding: 5px 0;
 }
 
 /********************************/
@@ -429,6 +425,14 @@ a.nav-icon {
   .grid-img {
     max-height: 200px;
     max-width: 200px;
+  }
+
+  .content-list {
+    line-height: 35px;
+  }
+
+  .content-list li {
+    padding: unset;
   }
 
 }
