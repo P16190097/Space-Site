@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: nasalization;
-  src: url('./fonts/nasalization/nasalizationrg.ttf');
+  src: url('../fonts/nasalization/nasalizationrg.ttf');
 }
 
 * {
@@ -37,18 +37,6 @@ nav {
 h1 {
   font-family: nasalization;
   color: #0078d3;
-}
-
-h2 {
-  color: #b245f0
-}
-
-.primary-color {
-  color: #f035a0
-}
-
-.secondary-color {
-  color: #b245f0
 }
 
 .hidden {
@@ -120,6 +108,14 @@ h2 {
   padding: 25px 0;
 }
 
+.content-list {
+  line-height: 20px;
+}
+
+.content-list li {
+  padding: 5px 0;
+}
+
 /********************************/
 /*        hero bar styles       */
 /********************************/
@@ -174,7 +170,7 @@ h2 {
 .grid-item {
   display: block;
   width: unset;
-  height: 500px;
+  min-height: 500px;
   margin: 20px;
   border: #252525 1px solid;
   background-color: #101010;
@@ -204,8 +200,8 @@ h2 {
 
 .grid-img {
   display: block;
-  max-height: 200px;
-  max-width: 200px;
+  max-height: 250px;
+  max-width: 250px;
   margin: auto;
 }
 
@@ -421,9 +417,22 @@ a.nav-icon {
   .grid-item {
     float: left;
     width: 33%;
-    margin: unset;
+    margin: 0 0 40px 0;
     border: unset;
     border-right: #252525 1px solid;
+  }
+
+  .grid-img {
+    max-height: 200px;
+    max-width: 200px;
+  }
+
+  .content-list {
+    line-height: 35px;
+  }
+
+  .content-list li {
+    padding: unset;
   }
 
 }
@@ -441,10 +450,8 @@ a.nav-icon {
   }
 
   .grid-img {
-    display: block;
     max-height: 300px;
     max-width: 300px;
-    margin: auto;
   }
 
   /********************************/
