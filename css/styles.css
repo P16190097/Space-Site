@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: nasalization;
-  src: url('./fonts/nasalization/nasalizationrg.ttf');
+  src: url('../fonts/nasalization/nasalizationrg.ttf');
 }
 
 * {
@@ -417,7 +417,7 @@ a.nav-icon {
   .grid-item {
     float: left;
     width: 33%;
-    margin: unset;
+    margin: 0 0 40px 0;
     border: unset;
     border-right: #252525 1px solid;
   }
