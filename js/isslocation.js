@@ -25,20 +25,16 @@ const isscirc = L.circle([0, 0], 2200e3, { color: "#c22", opacity: 0.3, weight: 
 isscirc.setRadius(700000);
 
 /******************************************************************/
-/*    perform HTTP GET requests via AJAX  and update map plots    */
+/*               perform HTTP GET requests via AJAX               */
 /******************************************************************/
 
-const getISSLocation = () => {
+const performHttpGet = (url, processResp) => {
     const xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = () => {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
             if (xmlhttp.status == 200) {
-                const { iss_position } = JSON.parse(xmlhttp.responseText);
-                // console.log(iss_position);
-                iss.setLatLng([iss_position.latitude, iss_position.longitude]);
-                isscirc.setLatLng([iss_position.latitude, iss_position.longitude]);
-                map.panTo([iss_position.latitude, iss_position.longitude], animate = true);
+                processResp(xmlhttp.responseText);
             }
             else if (xmlhttp.status == 400) {
                 console.log('There was an error 400');
@@ -49,10 +45,24 @@ const getISSLocation = () => {
         }
     };
 
-    xmlhttp.open("GET", 'http://api.open-notify.org/iss-now.json', true);
+    xmlhttp.open("GET", url, true);
     xmlhttp.send();
-
-    setTimeout(getISSLocation, 5000);
 };
 
-getISSLocation();
+/******************************************************************/
+/*    perform HTTP GET requests via AJAX and update map plots    */
+/******************************************************************/
+
+const positionUrl = 'http://api.open-notify.org/iss-now.json';
+
+const updateMap = (resp) => {
+    const { iss_position } = JSON.parse(resp);
+
+    iss.setLatLng([iss_position.latitude, iss_position.longitude]);
+    isscirc.setLatLng([iss_position.latitude, iss_position.longitude]);
+    map.panTo([iss_position.latitude, iss_position.longitude], animate = true);
+
+    setTimeout(() => performHttpGet(positionUrl, updateMap), 5000);
+}
+
+performHttpGet(positionUrl, updateMap)
