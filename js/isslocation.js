@@ -53,16 +53,14 @@ const performHttpGet = (url, processResp) => {
 /*    perform HTTP GET requests via AJAX and update map plots    */
 /******************************************************************/
 
-const protocol = window.location.protocol !== 'file:' ? window.location.protocol : 'http:';
-
-const positionUrl = `${protocol}//api.open-notify.org/iss-now.json`;
+const positionUrl = 'https://api.wheretheiss.at/v1/satellites/25544';
 
 const updateMap = (resp) => {
-    const { iss_position } = JSON.parse(resp);
+    const { latitude, longitude } = JSON.parse(resp);
 
-    iss.setLatLng([iss_position.latitude, iss_position.longitude]);
-    isscirc.setLatLng([iss_position.latitude, iss_position.longitude]);
-    map.panTo([iss_position.latitude, iss_position.longitude], animate = true);
+    iss.setLatLng([latitude, longitude]);
+    isscirc.setLatLng([latitude, longitude]);
+    map.panTo([latitude, longitude], animate = true);
 
     setTimeout(() => performHttpGet(positionUrl, updateMap), 5000);
 }
