@@ -129,7 +129,7 @@ h1 {
   width: 300px;
   height: 400px;
   background-color: #101010;
-  padding: 20px;
+  padding: 25px;
   margin: 25px;
   float: left;
 }
@@ -168,6 +168,7 @@ h1 {
   display: block;
   width: unset;
   min-height: 500px;
+  padding: 40px;
   margin: 20px;
   border: #252525 1px solid;
   background-color: #101010;
@@ -178,25 +179,21 @@ h1 {
   background-color: #0a0a0a;
 }
 
-.grid-item a {
+a .grid-item {
   text-decoration: none;
   color: #fff;
 }
 
-.grid-item-content {
-  padding: 40px;
-}
-
-.grid-item-content h1 {
+.grid-item h1 {
   font-size: 1.7em;
   min-height: 120px;
 }
 
-.grid-item-content p {
+.grid-item p {
   text-align: center;
 }
 
-.grid-item-content .page-header {
+.grid-item .page-header {
   padding: 0;
 }
 
@@ -427,7 +424,7 @@ a.nav-icon {
     border-right: #252525 1px solid;
   }
 
-  .grid-item-content h1 {
+  .grid-item h1 {
     min-height: 130px;
   }
 
