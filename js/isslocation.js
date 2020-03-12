@@ -53,7 +53,9 @@ const performHttpGet = (url, processResp) => {
 /*    perform HTTP GET requests via AJAX and update map plots    */
 /******************************************************************/
 
-const positionUrl = 'http://api.open-notify.org/iss-now.json';
+const protocol = window.location.protocol !== 'file:' ? window.location.protocol : 'http:';
+
+const positionUrl = `${protocol}//api.open-notify.org/iss-now.json`;
 
 const updateMap = (resp) => {
     const { iss_position } = JSON.parse(resp);
