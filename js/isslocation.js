@@ -55,7 +55,7 @@ const performHttpGet = (url, processResp) => {
 
 const protocol = window.location.protocol !== 'file:' ? window.location.protocol : 'http:';
 
-const positionUrl = `//api.open-notify.org/iss-now.json`;
+const positionUrl = `${protocol}//api.open-notify.org/iss-now.json`;
 
 const updateMap = (resp) => {
     const { iss_position } = JSON.parse(resp);
