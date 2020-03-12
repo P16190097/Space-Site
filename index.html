@@ -5,25 +5,89 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- <script src="https://use.fontawesome.com/2426c7bc71.js"></script> -->
-  <title>P-Number</title>
+  <title>P16190097 - Home</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-
-  <nav id="mySidenav" class="sidenav">
-    <a href="#"><i class="fa fa-flask red"></i> About</a>
-    <a href="#"><i class="fa fa-diamond blue"></i> Services</a>
-    <a href="#"><i class="fa fa-dot-circle-o green"></i> Clients</a>
-    <a href="#"><i class="fa fa-beer gold"></i> Contact</a>
+  <header class="site-header">
+    <div class="header-logo content-width">
+      <div>
+        <img src="img/nasa-logo.png" alt="logo" class="logo-img" />
+      </div>
+      <a href="javascript:void(0);" class="nav-icon blue" id="navToggle">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </header>
+  <nav class="site-nav">
+    <div class="content-width">
+      <div class="topnav" id="topnav">
+        <a href="./index.html" class="active">Home</a>
+        <a href="./history.html">History</a>
+        <a href="./projects.html">Projects</a>
+        <a href="./issLocation.html">ISS Tracker</a>
+      </div>
+    </div>
   </nav>
-
-  <main id="main" class="content">
-    <h1>Hello World</h1>
-    <a href="javascript:void(0)" id="navController" onclick="toggleNav()"><i class="fa fa-angle-right"></i></a>
+  <main id="main" class="body-container">
+    <div class="body-item hero-img">
+      <div class="content content-width">
+        <div class="hero-header-container">
+          <div class="hero-text-container">
+            <h1 class="page-header">The home of all things ISS</h1>
+            <p class="hero-text">Welcome to isstoday.com, the home of all things Interstellar! The objective of this
+              site is to make the history and current goings on of everyones favourite space station readily available
+              for all to see.</p>
+            <div class="hero-links">
+              <a href="./issLocation.html" class="hero-link">IIS Tracker</a>
+              <a href="#demo" class="hero-link">demo button</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="body-item">
+      <div class="content content-width grid-container">
+        <div class="grid-item">
+          <a href="./issLocation.html">
+            <div class="grid-item-content">
+              <h1 class="page-header">Where is the ISS right now?</h1>
+              <p>Find out here!</p>
+              <img src="img/Astronauts-wear-oxygen-mask-on-iss-weaer.png" class="grid-img" />
+            </div>
+          </a>
+        </div>
+        <div class="grid-item">
+          <a href="./history.html">
+            <div class="grid-item-content">
+              <h1 class="page-header">Discover the origins of the ISS</h1>
+              <p>Find out here!</p>
+              <img src="img/Astronauts-wear-oxygen-mask-on-iss-weaer.png" class="grid-img" />
+            </div>
+          </a>
+        </div>
+        <div class="grid-item">
+          <a href="./projects.html">
+            <div class="grid-item-content">
+              <h1 class="page-header">Whats happening on the ISS</h1>
+              <p>Find out here!</p>
+              <img src="img/Astronauts-wear-oxygen-mask-on-iss-weaer.png" class="grid-img" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
   </main>
-
+  <!-- <div id="star-canvas-wrapper" class="content content-width">
+      <canvas id="star-canvas" class="star-canvas">dsfsdf</canvas>
+    </div> -->
+  <footer class="footer">
+    <div class="footer-container">
+      <span>© 2019 - 2020 by Joshua Mayo, P16190097</span>
+    </div>
+  </footer>
   <script src="js/scripts.js"></script>
 </body>
 

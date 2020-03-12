@@ -1,55 +1,91 @@
-console.log("hello");
 
-let navOpen = false;
+/***********************************************/
+/* generic functions for getting current page dimensions in px  */
+/***********************************************/
 
-function toggleNav() {
-    if ((getWidth()) >= 768) {
-        if (navOpen) {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-            document.getElementById("navController").innerHTML = '<i class="fa fa-angle-right"></i>';
-            navOpen = false;
-        }
-        else {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-            document.getElementById("navController").innerHTML = '<i class="fa fa-angle-left"></i>';
-            navOpen = true;
-        }
-    }
-    else {
-        if (navOpen) {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementsByTagName("main").style.marginLeft = "0";
-            document.getElementById("navController").innerHTML = '<i class="fa fa-angle-right"></i>';
-            navOpen = false;
-        }
-        else {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementsByTagName("main").style.marginLeft = "250px";
-            document.getElementById("navController").innerHTML = '<i class="fa fa-angle-left"></i>';
-            navOpen = true;
-        }
-    }
-
-}
-
-function getWidth() {
+const getWidth = () => {
     return Math.max(
         document.body.scrollWidth,
         document.documentElement.scrollWidth,
         document.body.offsetWidth,
         document.documentElement.offsetWidth,
-        document.documentElement.clientWidth
+        document.documentElement.clientWidth,
     );
 }
 
-function getHeight() {
+const getHeight = () => {
     return Math.max(
         document.body.scrollHeight,
         document.documentElement.scrollHeight,
         document.body.offsetHeight,
         document.documentElement.offsetHeight,
-        document.documentElement.clientHeight
+        document.documentElement.clientHeight,
     );
 }
+
+/***********************************************/
+/*   toggle responsive navbar for mobile view  */
+/***********************************************/
+
+const toggelNavbar = () => {
+    var x = document.getElementById("topnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+        //x.style.maxHeight('198px');
+    } else {
+        x.className = "topnav";
+        //x.style.maxHeight('0px');
+    }
+}
+
+document.getElementById("navToggle").addEventListener("click", toggelNavbar);
+
+/***********************************************/
+/* reset the responsive navbar on page resize  */
+/***********************************************/
+
+const setNav = () => {
+    x = document.getElementById("topnav");
+    if (getWidth() >= 768 && x.className === 'topnav responsive') {
+        x.className = 'topnav';
+    }
+}
+
+window.onresize = setNav();
+
+/***********************************************/
+/*     perform HTTP GET requests via AJAX      */
+/***********************************************/
+
+const ajaxGetRequest = (url, setContent) => {
+    var xmlhttp = new XMLHttpRequest();
+
+    document.getElementById("loader").className = 'loader-wrapper';
+
+    xmlhttp.onreadystatechange = () => {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+            if (xmlhttp.status == 200) {
+                console.log(JSON.parse(xmlhttp.responseText));
+                setContent(JSON.parse(xmlhttp.responseText));
+            }
+            else if (xmlhttp.status == 400) {
+                console.log('There was an error 400');
+            }
+            else {
+                console.log('something else other than 200 was returned');
+            }
+            document.getElementById("loader").className += ' hidden';
+        }
+    };
+
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+const demoUrl = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`
+const setImg = (img) => {
+    document.getElementById("img").innerHTML = `<img src="${img.url}" class="logo-img" />`;
+}
+
+//ajaxGetRequest(demoUrl, setImg);
+
