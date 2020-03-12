@@ -129,12 +129,9 @@ h1 {
   width: 300px;
   height: 400px;
   background-color: #101010;
+  padding: 20px;
   margin: 25px;
   float: left;
-}
-
-.hero-text-container {
-  padding: 20px;
 }
 
 .hero-text {
@@ -253,7 +250,6 @@ h1 {
   background-color: #101010;
   max-height: 0;
   position: relative;
-  right: -25px;
   transition: max-height ease 0.5s; 
 }
 
