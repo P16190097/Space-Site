@@ -53,6 +53,7 @@ const performHttpGet = (url, processResp) => {
 /*    perform HTTP GET requests via AJAX and update map plots    */
 /******************************************************************/
 
+// API docs: https://wheretheiss.at/w/developer
 const positionUrl = 'https://api.wheretheiss.at/v1/satellites/25544';
 
 const updateMap = (resp) => {
