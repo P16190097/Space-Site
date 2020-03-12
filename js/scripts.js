@@ -28,7 +28,7 @@ const getHeight = () => {
 /***********************************************/
 
 const toggelNavbar = () => {
-    var x = document.getElementById("topnav");
+    const x = document.getElementById("topnav");
     if (x.className === "topnav") {
         x.className += " responsive";
         //x.style.maxHeight('198px');
@@ -45,7 +45,7 @@ document.getElementById("navToggle").addEventListener("click", toggelNavbar);
 /***********************************************/
 
 const setNav = () => {
-    x = document.getElementById("topnav");
+    const x = document.getElementById("topnav");
     if (getWidth() >= 768 && x.className === 'topnav responsive') {
         x.className = 'topnav';
     }
