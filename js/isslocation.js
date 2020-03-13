@@ -33,7 +33,7 @@ const performHttpGet = async (url, processResp) => {
     let response = await fetch(url)
 
     if (response.ok) {
-        let result = await response.json()
+        const result = await response.json()
         processResp(result);
     }
     else {
