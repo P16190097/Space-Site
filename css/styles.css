@@ -46,6 +46,7 @@ h2 {
 p {
   line-height: 25px;
   padding-bottom: 3rem;
+  margin-bottom: 0;
 }
 
 figcaption {
@@ -116,6 +117,10 @@ figcaption {
   height: 400px;
 }
 
+.map-container {
+  padding-bottom: 3rem;
+}
+
 .page-header {
   margin: 0;
   padding: 25px 0;
@@ -127,6 +132,17 @@ figcaption {
 
 .content-list li {
   padding: 5px 0;
+}
+
+.research-img-wrapper {
+  float: none;
+  text-align: center;
+  margin: 0;
+  padding: 30px;
+}
+
+.research-img {
+  max-height: 200px;
 }
 
 /********************************/
@@ -381,6 +397,10 @@ a.nav-icon {
 /*       timeline styles        */
 /********************************/
 
+.content-width.timeline {
+  padding: 0;
+}
+
 /* The actual timeline (the vertical ruler) */
 .timeline {
   position: relative;
@@ -561,9 +581,17 @@ a.nav-icon {
     padding: unset;
   }
 
+  .research-img-wrapper {
+    float: right;
+  }
+
   /********************************/
   /*       timeline styles        */
   /********************************/
+
+  .content-width.timeline {
+    padding: 0 20px;
+  }
 
   /* Place the timelime to the left */
   .timeline::after {
