@@ -42,7 +42,7 @@ const performHttpGet = async (url, processResp) => {
 };
 
 /******************************************************************/
-/*    perform HTTP GET requests via AJAX and update map plots    */
+/*    perform HTTP GET requests via AJAX and update map plots     */
 /******************************************************************/
 
 // API docs: https://wheretheiss.at/w/developer
