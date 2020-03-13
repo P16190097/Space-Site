@@ -261,7 +261,7 @@ a .grid-item {
 }
 
 .topnav a:hover {
-  color: #105bd8;
+  color: #0f4ab1;
 }
 
 .topnav a {
@@ -498,6 +498,7 @@ a.nav-icon {
   }
 
   .topnav a.active {
+    color: #fff;
     border-bottom: #0066b2 solid 2px;
   }
 
