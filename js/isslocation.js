@@ -46,7 +46,10 @@ const performHttpGet = async (url, processResp) => {
 /******************************************************************/
 
 // API docs: https://wheretheiss.at/w/developer
-const positionUrl = 'https://api.wheretheiss.at/v1/satellites/25544';
+
+const protocol = window.location.protocol !== 'file:' ? window.location.protocol : 'https:';
+
+const positionUrl = `${protocol}//api.wheretheiss.at/v1/satellites/25544`;
 
 const updateMap = (resp) => {
     const { latitude, longitude } = resp;
