@@ -57,7 +57,7 @@ window.onresize = setNav();
 /*     perform HTTP GET requests via AJAX      */
 /***********************************************/
 
-const performHttpGet = async (url, processResp) => {
+const performHttpGet = async (url, processResp, onFail) => {
     let response = await fetch(url)
 
     if (response.ok) {
@@ -67,6 +67,7 @@ const performHttpGet = async (url, processResp) => {
     }
     else {
         console.log('An error has occured');
+        onFail(response);
     }
 };
 

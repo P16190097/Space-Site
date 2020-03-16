@@ -45,6 +45,10 @@ const updateMap = (resp) => {
     document.getElementById('iss-info').innerHTML = `Latitude: ${latitude}</br>Longitude: ${longitude}</br>Altitude: ${altitude}km</br>Velocity: ${velocity}km/h`;
 
     setTimeout(() => performHttpGet(positionUrl, updateMap), 5000);
-}
+};
 
-performHttpGet(positionUrl, updateMap)
+const showError = () => {
+    document.getElementById('iss-info').innerHTML = `Tracker details could not be fetched`;
+};
+
+performHttpGet(positionUrl, updateMap, showError);
