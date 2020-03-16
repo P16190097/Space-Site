@@ -246,6 +246,7 @@ a .grid-item {
 /********************************/
 
 .header-logo {
+  position: relative;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -308,9 +309,20 @@ a .grid-item {
   text-align: center;
 }
 
-a.nav-icon {
+/* a.nav-icon i {
   float: right;
   margin: 15px;
+  position: relative;
+  bottom: 55px;
+  border: grey solid 1px;
+  border-radius: 25%;
+  padding: 10px;
+} */
+
+a.nav-icon {
+  float: right;
+  background-color: #101010;
+  margin: 20px;
   position: relative;
   bottom: 55px;
   border: grey solid 1px;

@@ -1,7 +1,7 @@
 
-/***********************************************/
-/* generic functions for getting current page dimensions in px  */
-/***********************************************/
+/*****************************************************************/
+/*  generic functions for getting current page dimensions in px  */
+/*****************************************************************/
 
 const getWidth = () => {
     return Math.max(
