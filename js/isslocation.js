@@ -26,36 +26,29 @@ const isscirc = L.circle([0, 0], 2200e3, { color: "#c22", opacity: 0.3, weight: 
 isscirc.setRadius(500000);
 
 /******************************************************************/
-/*               perform HTTP GET requests via AJAX               */
-/******************************************************************/
-
-const performHttpGet = async (url, processResp) => {
-    let response = await fetch(url)
-
-    if (response.ok) {
-        const result = await response.json()
-        processResp(result);
-    }
-    else {
-        console.log('An error has occured');
-    }
-};
-
-/******************************************************************/
 /*    perform HTTP GET requests via AJAX and update map plots     */
 /******************************************************************/
 
 // API docs: https://wheretheiss.at/w/developer
-const positionUrl = 'https://api.wheretheiss.at/v1/satellites/25544';
+
+const protocol = window.location.protocol !== 'file:' ? window.location.protocol : 'https:';
+
+const positionUrl = `${protocol}//api.wheretheiss.at/v1/satellites/25544`;
 
 const updateMap = (resp) => {
-    const { latitude, longitude } = resp;
+    const { latitude, longitude, altitude, velocity } = resp;
 
     iss.setLatLng([latitude, longitude]);
     isscirc.setLatLng([latitude, longitude]);
     map.panTo([latitude, longitude], animate = true);
 
-    setTimeout(() => performHttpGet(positionUrl, updateMap), 5000);
-}
+    document.getElementById('iss-info').innerHTML = `Latitude: ${latitude}</br>Longitude: ${longitude}</br>Altitude: ${altitude}km</br>Velocity: ${velocity}km/h`;
 
-performHttpGet(positionUrl, updateMap)
+    setTimeout(() => performHttpGet(positionUrl, updateMap), 5000);
+};
+
+const showError = () => {
+    document.getElementById('iss-info').innerHTML = `Tracker details could not be fetched`;
+};
+
+performHttpGet(positionUrl, updateMap, showError);

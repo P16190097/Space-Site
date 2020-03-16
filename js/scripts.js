@@ -57,35 +57,29 @@ window.onresize = setNav();
 /*     perform HTTP GET requests via AJAX      */
 /***********************************************/
 
-const ajaxGetRequest = (url, setContent) => {
-    var xmlhttp = new XMLHttpRequest();
+const performHttpGet = async (url, processResp, onFail) => {
+    let response = await fetch(url)
 
-    document.getElementById("loader").className = 'loader-wrapper';
+    if (response.ok) {
+        const result = await response.json()
+        console.log(result);
+        processResp(result);
+    }
+    else {
+        console.log('An error has occured');
+        onFail(response);
+    }
+};
 
-    xmlhttp.onreadystatechange = () => {
-        if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
-            if (xmlhttp.status == 200) {
-                console.log(JSON.parse(xmlhttp.responseText));
-                setContent(JSON.parse(xmlhttp.responseText));
-            }
-            else if (xmlhttp.status == 400) {
-                console.log('There was an error 400');
-            }
-            else {
-                console.log('something else other than 200 was returned');
-            }
-            document.getElementById("loader").className += ' hidden';
-        }
-    };
-
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-}
+/***********************************************/
+/*     nasa API url and response function      */
+/***********************************************/
 
 const demoUrl = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`
-const setImg = (img) => {
-    document.getElementById("img").innerHTML = `<img src="${img.url}" class="logo-img" />`;
+const setImg = (resp) => {
+    const { url } = resp;
+    document.getElementById("img").innerHTML = `<img src="${url}" class="logo-img" />`;
 }
 
-//ajaxGetRequest(demoUrl, setImg);
+//performHttpGet(demoUrl, setImg);
 
