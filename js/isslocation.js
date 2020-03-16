@@ -26,22 +26,6 @@ const isscirc = L.circle([0, 0], 2200e3, { color: "#c22", opacity: 0.3, weight: 
 isscirc.setRadius(500000);
 
 /******************************************************************/
-/*               perform HTTP GET requests via AJAX               */
-/******************************************************************/
-
-const performHttpGet = async (url, processResp) => {
-    let response = await fetch(url)
-
-    if (response.ok) {
-        const result = await response.json()
-        processResp(result);
-    }
-    else {
-        console.log('An error has occured');
-    }
-};
-
-/******************************************************************/
 /*    perform HTTP GET requests via AJAX and update map plots     */
 /******************************************************************/
 

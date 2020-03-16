@@ -57,17 +57,22 @@ window.onresize = setNav();
 /*     perform HTTP GET requests via AJAX      */
 /***********************************************/
 
-const performAjaxGet = async (url, processResp) => {
+const performHttpGet = async (url, processResp) => {
     let response = await fetch(url)
 
     if (response.ok) {
         const result = await response.json()
+        console.log(result);
         processResp(result);
     }
     else {
         console.log('An error has occured');
     }
 };
+
+/***********************************************/
+/*     nasa API url and response function      */
+/***********************************************/
 
 const demoUrl = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`
 const setImg = (resp) => {
