@@ -73,3 +73,31 @@ The `js/scripts.js` file contains a simple console.log statement to confirm that
 ```
 console.log("hello");
 ```
+
+## References
+
+Information references are as follows:
+
+### Content
+
+https://www.nasa.gov/mission_pages/station/research/experiments_category
+https://www.issnationallab.org/about/iss-timeline/
+https://wheretheiss.at/w/developer
+
+### Code
+
+https://www.w3schools.com/howto/howto_js_topnav_responsive.asp
+https://www.w3schools.com/howto/howto_css_timeline.asp
+https://leafletjs.com/examples/quick-start/
+http://open-notify.org/Open-Notify-API/
+
+### Images
+
+https://starwarsblog.starwars.com/wp-content/uploads/sites/6/2017/09/casis-final-patch.jpg
+https://i.pinimg.com/originals/3d/9a/34/3d9a34e26a24d68df0972adef47c9855.jpg
+https://spaceflight.nasa.gov/gallery/images/station/assembly/html/sts101-714-028.html
+https://github.com/nasa/nasapress/blob/master/dist/images/favicons/favicon.ico
+https://i.redd.it/gnvrehb4tva41.jpg
+https://www.scienceabc.com/wp-content/uploads/2019/05/Astronauts-wear-oxygen-mask-on-iss-weaer.jpg
+https://www.nanonics.co.il/images/Client_Logos/nasa-logo-min.png
+http://open-notify.org/Open-Notify-API/map/ISSIcon.png
