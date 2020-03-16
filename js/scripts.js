@@ -31,10 +31,8 @@ const toggelNavbar = () => {
     const x = document.getElementById("topnav");
     if (x.className === "topnav") {
         x.className += " responsive";
-        //x.style.maxHeight('198px');
     } else {
         x.className = "topnav";
-        //x.style.maxHeight('0px');
     }
 }
 
