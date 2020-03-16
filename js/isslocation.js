@@ -36,11 +36,13 @@ const protocol = window.location.protocol !== 'file:' ? window.location.protocol
 const positionUrl = `${protocol}//api.wheretheiss.at/v1/satellites/25544`;
 
 const updateMap = (resp) => {
-    const { latitude, longitude } = resp;
+    const { latitude, longitude, altitude, velocity } = resp;
 
     iss.setLatLng([latitude, longitude]);
     isscirc.setLatLng([latitude, longitude]);
     map.panTo([latitude, longitude], animate = true);
+
+    document.getElementById('iss-info').innerHTML = `Latitude: ${latitude}</br>Longitude: ${longitude}</br>Altitude: ${altitude}km</br>Velocity: ${velocity}km/h`;
 
     setTimeout(() => performHttpGet(positionUrl, updateMap), 5000);
 }
