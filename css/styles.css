@@ -113,6 +113,12 @@ figcaption {
   background-color: #000;
 }
 
+#mesh-canvas {
+  position: absolute;
+  width: 100%;
+  height: 66px;
+}
+
 #mapid {
   height: 400px;
 }
@@ -139,6 +145,11 @@ figcaption {
 
 .research-img {
   max-height: 200px;
+}
+
+.header-height {
+  position: relative;
+  height: 66px;
 }
 
 /********************************/
@@ -513,6 +524,18 @@ a.nav-icon {
 
   /* applies to screens wider than 768px */
   
+  header {
+    min-height: 138px;
+  }
+
+  .header-height {
+    height: 138px;
+  }
+
+  #mesh-canvas {
+    height: 137px;
+  }
+
   .site-header {
     max-height: initial;
   }
