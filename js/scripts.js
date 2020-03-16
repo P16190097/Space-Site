@@ -60,7 +60,6 @@ const performHttpGet = async (url, processResp, onFail) => {
 
     if (response.ok) {
         const result = await response.json()
-        console.log(result);
         processResp(result);
     }
     else {
