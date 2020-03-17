@@ -44,12 +44,16 @@ document.getElementById("navToggle").addEventListener("click", toggelNavbar);
 
 const setNav = () => {
     const x = document.getElementById("topnav");
-    if (getWidth() >= 768 && x.className === 'topnav responsive') {
+    if (getWidth() >= 768 && (x.className === 'topnav responsive' || x.className === 'topnav' || x.className === 'content-width topnav')) {
+        x.className = 'content-width topnav';
+    }
+    else {
         x.className = 'topnav';
     }
 }
 
-window.onresize = setNav();
+setNav();
+window.onresize = () => setNav();
 
 /***********************************************/
 /*     perform HTTP GET requests via AJAX      */

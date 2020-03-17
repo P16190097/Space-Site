@@ -114,9 +114,7 @@ figcaption {
 }
 
 #mesh-canvas {
-  position: absolute;
-  width: 100%;
-  height: 66px;
+  display:none;
 }
 
 #mapid {
@@ -246,7 +244,6 @@ a .grid-item {
 /********************************/
 
 .header-logo {
-  position: relative;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -311,8 +308,7 @@ a .grid-item {
 
 a.nav-icon {
   float: right;
-  background-color: #101010;
-  margin: 20px;
+  margin: 15px;
   position: relative;
   bottom: 55px;
   border: grey solid 1px;
@@ -453,10 +449,13 @@ a.nav-icon {
   }
 
   .header-height {
-    height: 138px;
+    height: 137px;
   }
 
   #mesh-canvas {
+    display: initial;
+    position: absolute;
+    width: 100%;
     height: 137px;
   }
 
