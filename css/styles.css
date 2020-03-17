@@ -34,12 +34,8 @@ nav {
   background-color: #101010;
 }
 
-h1 {
+h1, h2, h3 {
   font-family: nasalization;
-  color: #0078d3;
-}
-
-h2 {
   color: #0078d3;
 }
 
@@ -166,6 +162,10 @@ figcaption {
   padding: 25px;
   margin: 25px;
   float: left;
+}
+
+.hero-header-container p {
+  margin: 20px 0;
 }
 
 .hero-text {

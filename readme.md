@@ -2,77 +2,55 @@
 
 This is very basic boilerplate code for you to get started with.
 
-## index.html
+## Issues faced
 
-The `index.html` file includes a basic template with a link to the `css/styles.css` file and a script tag after the main content which links to the `js/scripts.js` file.
+I ran into a number of issus whilest developing aspects of the site including when designing and building the basic site layout, ensuring all aspects of the site was reponsive and fully mobile compatible and writing the scripts which control the more dynamic features of the site such as the canvas header and the ISS live tracker.  
 
-```
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>P-Number</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  
-  <h1>Hello World</h1>
+### Layout 
 
-  <script src="js/scripts.js"></script>
-</body>
-</html>
-```
 
-## css/styles.css
 
-The `css/styles.css` file contains a basic starting template for a responsive page.
+### Styling
+
+
+
+### Javascript
+
+Initially when creating the ISS location tracker I used an API which communicated using HTTP (Hypertext Transfer Protocol). The problem with this came when I attempted to deploy a live instance of the site using Github pages which serves the site via HTTPS (Hypertext Transfer Protocol Secure), an extension of HTTP which utilises TLS (Transport Layer Security) to encrypt communication between the server and the client. This however meant that the site hosted on the server could not request 3rd party resources which are transfered in a non secure manor such as HTTP and so I had to instead had to switch to a different API which communicated via HTTPS as shown below using string interpolation to insert the protocol is given otherwise use HTTPS. 
 
 ```
-/* MOBILE AND GLOBAL STYLES */
+const protocol = window.location.protocol !== 'file:' ? window.location.protocol : 'https:';
 
-/* applies to screens smaller than 500px (first breakpoint) */
-/* and above unless overwritten below */
+const positionUrl = `${protocol}//api.wheretheiss.at/v1/satellites/25544`;
+```
 
-body {
-  background: #fcc;
-} 
+I also ran into issues when setting the correct classes to the navbar container should the screen dimensions switch between desktop and mobile views using code derived from the responsive navigation bar from w3schools. Previously the navbar would break the constraints of its parent container sliding to the far left of the page as well as fail to open the navbar should the user click the link to open the sliding nav bar in mobile view for the first time however the nav bar would still open should the user click the link a subsequent time. Neither of these behaviours were intended and so had to be remedied using the following logic:
 
-
-
-/* TABLET STYLES */
-
-@media screen and (min-width: 500px) {
-
-  /* applies to screens wider than 499px */
-  
-  body {
-    background: #cfc;
-  } 
+```
+const toggelNavbar = () => {
+    const x = document.getElementById("topnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
 }
 
+document.getElementById("navToggle").addEventListener("click", toggelNavbar);
 
-
-/* DESKTOP STYLES */
-
-@media screen and (min-width: 1000px) {
-
-  /* applies to screens wider than 999px */
-
-  body {
-    background: #ccf;
-  } 
+const setNav = () => {
+    const x = document.getElementById("topnav");
+    if (getWidth() >= 768) {
+        x.className = 'content-width topnav';
+    }
+    else {
+        x.className = 'topnav';
+    }
 }
 
-```
-
-## js/scripts.js
-
-The `js/scripts.js` file contains a simple console.log statement to confirm that it is being executed.
-
-```
-console.log("hello");
-```
+setNav();
+window.onresize = () => setNav();
+``` 
 
 ## References
 
