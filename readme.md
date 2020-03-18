@@ -2,6 +2,10 @@
 
 This website functions as a record of the history and purpose of the International Space Station (ISS) as well as providing the user with an accurate real life representation of the International Space Stations current location above the earth. I chose this subject as it provided an interesting base to demonstrate my knowledge of front end web design as well as push the limits of what can be accomplished using only HTML5, CSS3 and Javascript (ES6).
 
+## Design Considerations
+
+TODO
+
 ## Issues faced
 
 I ran into a number of issus whilest developing aspects of the site including when designing and building the basic site layout, ensuring all aspects of the site was reponsive and fully mobile compatible and writing the scripts which control the more dynamic features of the site such as the canvas header and the ISS live tracker.  
