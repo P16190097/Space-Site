@@ -108,15 +108,15 @@ const checkDistance = (x1, y1, x2, y2) => {
 };
 
 const linkPoints = (point1, hubs) => {
-    for (let i = 0; i < hubs.length; i++) {
-        let distance = checkDistance(point1.x, point1.y, hubs[i].x, hubs[i].y);
+    for (hub of hubs) {
+        let distance = checkDistance(point1.x, point1.y, hub.x, hub.y);
         let opacity = 1 - distance / opts.linkRadius;
         if (opacity > 0) {
             drawArea.lineWidth = 0.5;
             drawArea.strokeStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`;
             drawArea.beginPath();
             drawArea.moveTo(point1.x, point1.y);
-            drawArea.lineTo(hubs[i].x, hubs[i].y);
+            drawArea.lineTo(hub.x, hub.y);
             drawArea.closePath();
             drawArea.stroke();
         }
@@ -174,12 +174,12 @@ const setup = () => {
 const loop = () => {
     window.requestAnimationFrame(loop);
     drawArea.clearRect(0, 0, w, h);
-    for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
+    for (particle of particles) {
+        particle.update();
+        particle.draw();
     }
-    for (let i = 0; i < particles.length; i++) {
-        linkPoints(particles[i], particles);
+    for (particle of particles) {
+        linkPoints(particle, particles);
     }
 }
 

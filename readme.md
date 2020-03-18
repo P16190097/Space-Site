@@ -48,6 +48,61 @@ performHttpGet(positionUrl, updateMap, showError);
 
 This methodology also made it much more managable to to style the site as I could take advantage of HTML5s semantic tags to style portions of the site directly rather than having a multitude of classes specific to each page instead which inherently becomes much more difficult to maintain. 
 
+Consideration was also taken to convert any code taken from a 3rd party source into its current format (ES5 to ES6 etc). This includes modifying CSS to use CSS3 styles such as flexbox if appropriate and markup to use semantic tags is applicable. A good example of this can be found in the canvas script as the tutorial supplied used outdated ES5 syntax including ES5 function and class notation and older style for loops instead of 'for in' iterators. A small excerpt of the refacotred code can be seen below:
+
+```
+class Particle {
+    constructor(xPos, yPos) {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.speed = opts.defaultSpeed + Math.random() * opts.variantSpeed;
+        this.directionAngle = Math.floor(Math.random() * 360);
+        this.color = opts.particleColor;
+        this.radius = opts.defaultRadius + Math.random() * opts.variantRadius;
+        this.vector = {
+            x: Math.cos(this.directionAngle) * this.speed,
+            y: Math.sin(this.directionAngle) * this.speed
+        };
+        this.update = () => {
+            this.border();
+            this.x += this.vector.x;
+            this.y += this.vector.y;
+        };
+        this.border = () => {
+            if (this.x >= w || this.x <= 0) {
+                this.vector.x *= -1;
+            }
+            if (this.y >= h || this.y <= 0) {
+                this.vector.y *= -1;
+            }
+            if (this.x > w) this.x = w;
+            if (this.y > h) this.y = h;
+            if (this.x < 0) this.x = 0;
+            if (this.y < 0) this.y = 0;
+        };
+        this.draw = () => {
+            drawArea.beginPath();
+            drawArea.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            drawArea.closePath();
+            drawArea.fillStyle = this.color;
+            drawArea.fill();
+        };
+    };
+};
+
+const loop = () => {
+    window.requestAnimationFrame(loop);
+    drawArea.clearRect(0, 0, w, h);
+    for (particle of particles) {
+        particle.update();
+        particle.draw();
+    }
+    for (particle of particles) {
+        linkPoints(particle, particles);
+    }
+}
+```
+
 ## Issues faced
 
 I ran into a number of issus whilest developing aspects of the site including when designing and building the basic site layout, ensuring all aspects of the site was reponsive and fully mobile compatible and writing the scripts which control the more dynamic features of the site such as the canvas header and the ISS live tracker.  
@@ -185,3 +240,7 @@ Information references are as follows:
 - Image of waving astronaut used in the home page grid, can be found [here](https://www.scienceabc.com/wp-content/uploads/2019/05/Astronauts-wear-oxygen-mask-on-iss-weaer.jpg). 
 - Imgae of NASA logo used in the page header can be found [here](https://www.nanonics.co.il/images/Client_Logos/nasa-logo-min.png). 
 - Icon used for ISS tracker location can be found [here](http://open-notify.org/Open-Notify-API/map/ISSIcon.png). 
+
+## Module Conclusions
+
+TODO
