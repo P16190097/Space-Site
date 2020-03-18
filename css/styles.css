@@ -159,11 +159,11 @@ footer {
 }
 
 .hero-header-container {
-  width: 300px;
-  height: 400px;
+  width: 285px;
+  height: 410px;
   background-color: #101010;
   padding: 25px;
-  margin: 25px;
+  margin: 25px 0;
   float: left;
 }
 
@@ -528,6 +528,16 @@ a.nav-icon {
 
   .research-img-wrapper {
     float: right;
+  }
+
+  /********************************/
+  /*        hero bar styles       */
+  /********************************/
+
+  .hero-header-container {
+    width: 300px;
+    height: 400px;
+    margin: 25px;
   }
 
   /********************************/

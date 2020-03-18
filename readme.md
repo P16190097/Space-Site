@@ -1,10 +1,107 @@
 # CTEC3905 Assignment
 
-This website functions as a record of the history and purpose of the International Space Station (ISS) as well as providing the user with an accurate real life representation of the International Space Stations current location above the earth. I chose this subject as it provided an interesting base to demonstrate my knowledge of front end web design as well as push the limits of what can be accomplished using only HTML5, CSS3 and Javascript (ES6).
+This website functions as a record of the history and purpose of the International Space Station (ISS) as well as providing the user with an accurate real life representation of the International Space Stations current location above the earth. I chose this subject as it provided an interesting base to demonstrate my knowledge of front end web design as well as push the limits of what can be accomplished using only HTML5, CSS3 and Javascript (ES6). This web site is in no way affiliated with the North American Space Agency (NASA).
 
 ## Design Considerations
 
-TODO
+I designed to the web site to be modular in nature where every page shared a base layout where the main content of the page was easily swappable between any page. This design methodology would make maintneance, modification and development much more manageable as any changes to the script or styles would imact each page in the same way. I also took a similar approach when writing the sites Javascript by refacotring generic reusable functions into the main site script available from any page then calling them when needed from page specific scripts. A good example of this would be how data is fetched from 3rd party APIs. The main script contains the function below:
+
+```
+const performHttpGet = async (url, processResp, onFail) => {
+    let response = await fetch(url)
+
+    if (response.ok) {
+        const result = await response.json()
+        processResp(result);
+    }
+    else {
+        onFail(response);
+    }
+};
+```
+
+Which can then be called from any other script embedded on the site which is then done by a seperate script present only on the tracker page as shown below:
+
+```
+const protocol = window.location.protocol !== 'file:' ? window.location.protocol : 'https:';
+
+const positionUrl = `${protocol}//api.wheretheiss.at/v1/satellites/25544`;
+
+const updateMap = (resp) => {
+    const { latitude, longitude, altitude, velocity } = resp;
+
+    iss.setLatLng([latitude, longitude]);
+    isscirc.setLatLng([latitude, longitude]);
+    map.panTo([latitude, longitude], animate = true);
+
+    document.getElementById('iss-info').innerHTML = `Latitude: ${latitude}</br>Longitude: ${longitude}</br>Altitude: ${altitude}km</br>Velocity: ${velocity}km/h`;
+
+    setTimeout(() => performHttpGet(positionUrl, updateMap), 5000);
+};
+
+const showError = () => {
+    document.getElementById('iss-info').innerHTML = `Tracker details could not be fetched`;
+};
+
+performHttpGet(positionUrl, updateMap, showError);
+```
+
+This methodology also made it much more managable to to style the site as I could take advantage of HTML5s semantic tags to style portions of the site directly rather than having a multitude of classes specific to each page instead which inherently becomes much more difficult to maintain. 
+
+Consideration was also taken to convert any code taken from a 3rd party source into its current format (ES5 to ES6 etc). This includes modifying CSS to use CSS3 styles such as flexbox if appropriate and markup to use semantic tags is applicable. A good example of this can be found in the canvas script as the tutorial supplied used outdated ES5 syntax including ES5 function and class notation and older style for loops instead of 'for in' iterators. A small excerpt of the refactored code can be seen below:
+
+```
+class Particle {
+    constructor(xPos, yPos) {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.speed = opts.defaultSpeed + Math.random() * opts.variantSpeed;
+        this.directionAngle = Math.floor(Math.random() * 360);
+        this.color = opts.particleColor;
+        this.radius = opts.defaultRadius + Math.random() * opts.variantRadius;
+        this.vector = {
+            x: Math.cos(this.directionAngle) * this.speed,
+            y: Math.sin(this.directionAngle) * this.speed
+        };
+        this.update = () => {
+            this.border();
+            this.x += this.vector.x;
+            this.y += this.vector.y;
+        };
+        this.border = () => {
+            if (this.x >= w || this.x <= 0) {
+                this.vector.x *= -1;
+            }
+            if (this.y >= h || this.y <= 0) {
+                this.vector.y *= -1;
+            }
+            if (this.x > w) this.x = w;
+            if (this.y > h) this.y = h;
+            if (this.x < 0) this.x = 0;
+            if (this.y < 0) this.y = 0;
+        };
+        this.draw = () => {
+            drawArea.beginPath();
+            drawArea.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            drawArea.closePath();
+            drawArea.fillStyle = this.color;
+            drawArea.fill();
+        };
+    };
+};
+
+const loop = () => {
+    window.requestAnimationFrame(loop);
+    drawArea.clearRect(0, 0, w, h);
+    for (particle of particles) {
+        particle.update();
+        particle.draw();
+    }
+    for (particle of particles) {
+        linkPoints(particle, particles);
+    }
+}
+```
 
 ## Issues faced
 
@@ -143,3 +240,7 @@ Information references are as follows:
 - Image of waving astronaut used in the home page grid, can be found [here](https://www.scienceabc.com/wp-content/uploads/2019/05/Astronauts-wear-oxygen-mask-on-iss-weaer.jpg). 
 - Imgae of NASA logo used in the page header can be found [here](https://www.nanonics.co.il/images/Client_Logos/nasa-logo-min.png). 
 - Icon used for ISS tracker location can be found [here](http://open-notify.org/Open-Notify-API/map/ISSIcon.png). 
+
+## Module Conclusions
+
+TODO
