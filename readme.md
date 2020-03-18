@@ -210,6 +210,9 @@ const getWidth = () => {
 }
 ```
 
+### Styling 
+
+The CSS validaion service flags `.lvml	Property behavior doesn't exist : url(#default#VML)` as an error however this is coming from a 3rd party [leaflet stylesheet](https://unpkg.com/leaflet@1.6.0/dist/leaflet.css) which I do not have any control over however is necessary in order for the tracker map to function properly and so I believe this error should be ignored.
 
 ## References
 
