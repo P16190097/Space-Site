@@ -34,13 +34,13 @@ nav {
   background-color: #101010;
 }
 
-h1 {
+h1, h2, h3 {
   font-family: nasalization;
   color: #0078d3;
 }
 
-h2 {
-  color: #0078d3;
+a {
+  text-decoration: none;
 }
 
 p {
@@ -82,9 +82,8 @@ figcaption {
   display: block;
 }
 
-.body-container {
+main {
   flex: 1 0 auto;
-  background-color: #252525;
 }
 
 .footer-container {
@@ -93,7 +92,7 @@ figcaption {
   color: #fff;
 }
 
-.footer {
+footer {
   flex-shrink: 0;
 }
 
@@ -166,6 +165,10 @@ figcaption {
   padding: 25px;
   margin: 25px;
   float: left;
+}
+
+.hero-header-container p {
+  margin: 20px 0;
 }
 
 .hero-text {
@@ -248,7 +251,7 @@ a .grid-item {
   padding-bottom: 10px;
 }
 
-.site-header {
+header {
   max-height: 75px;
   border-bottom: 1px solid #1d1d1d;
 }
@@ -459,7 +462,7 @@ a.nav-icon {
     height: 137px;
   }
 
-  .site-header {
+  header {
     max-height: initial;
   }
 

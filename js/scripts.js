@@ -44,7 +44,7 @@ document.getElementById("navToggle").addEventListener("click", toggelNavbar);
 
 const setNav = () => {
     const x = document.getElementById("topnav");
-    if (getWidth() >= 768 && (x.className === 'topnav responsive' || x.className === 'topnav' || x.className === 'content-width topnav')) {
+    if (getWidth() >= 768) {
         x.className = 'content-width topnav';
     }
     else {
@@ -86,8 +86,8 @@ const opts = {
     particleColor: "rgb(200,200,200)",
     lineColor: "rgb(200,200,200)",
     particleAmount: 10,
-    defaultSpeed: 1,
-    variantSpeed: 1,
+    defaultSpeed: 0.5,
+    variantSpeed: 0.5,
     defaultRadius: 2,
     variantRadius: 2,
     linkRadius: 200,
