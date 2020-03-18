@@ -67,7 +67,6 @@ const performHttpGet = async (url, processResp, onFail) => {
         processResp(result);
     }
     else {
-        console.log('An error has occured');
         onFail(response);
     }
 };

@@ -1,10 +1,52 @@
 # CTEC3905 Assignment
 
-This website functions as a record of the history and purpose of the International Space Station (ISS) as well as providing the user with an accurate real life representation of the International Space Stations current location above the earth. I chose this subject as it provided an interesting base to demonstrate my knowledge of front end web design as well as push the limits of what can be accomplished using only HTML5, CSS3 and Javascript (ES6).
+This website functions as a record of the history and purpose of the International Space Station (ISS) as well as providing the user with an accurate real life representation of the International Space Stations current location above the earth. I chose this subject as it provided an interesting base to demonstrate my knowledge of front end web design as well as push the limits of what can be accomplished using only HTML5, CSS3 and Javascript (ES6). This web site is in no way affiliated with the North American Space Agency (NASA).
 
 ## Design Considerations
 
-TODO
+I designed to the web site to be modular in nature where every page shared a base layout where the main content of the page was easily swappable between any page. This design methodology would make maintneance, modification and development much more manageable as any changes to the script or styles would imact each page in the same way. I also took a similar approach when writing the sites Javascript by refacotring generic reusable functions into the main site script available from any page then calling them when needed from page specific scripts. A good example of this would be how data is fetched from 3rd party APIs. The main script contains the function below:
+
+```
+const performHttpGet = async (url, processResp, onFail) => {
+    let response = await fetch(url)
+
+    if (response.ok) {
+        const result = await response.json()
+        processResp(result);
+    }
+    else {
+        onFail(response);
+    }
+};
+```
+
+Which can then be called from any other script embedded on the site which is then done by a seperate script present only on the tracker page as shown below:
+
+```
+const protocol = window.location.protocol !== 'file:' ? window.location.protocol : 'https:';
+
+const positionUrl = `${protocol}//api.wheretheiss.at/v1/satellites/25544`;
+
+const updateMap = (resp) => {
+    const { latitude, longitude, altitude, velocity } = resp;
+
+    iss.setLatLng([latitude, longitude]);
+    isscirc.setLatLng([latitude, longitude]);
+    map.panTo([latitude, longitude], animate = true);
+
+    document.getElementById('iss-info').innerHTML = `Latitude: ${latitude}</br>Longitude: ${longitude}</br>Altitude: ${altitude}km</br>Velocity: ${velocity}km/h`;
+
+    setTimeout(() => performHttpGet(positionUrl, updateMap), 5000);
+};
+
+const showError = () => {
+    document.getElementById('iss-info').innerHTML = `Tracker details could not be fetched`;
+};
+
+performHttpGet(positionUrl, updateMap, showError);
+```
+
+This methodology also made it much more managable to to style the site as I could take advantage of HTML5s semantic tags to style portions of the site directly rather than having a multitude of classes specific to each page instead which inherently becomes much more difficult to maintain. 
 
 ## Issues faced
 
