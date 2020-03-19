@@ -159,11 +159,11 @@ footer {
 }
 
 .hero-header-container {
-  width: 285px;
-  height: 410px;
+  width: 300px;
+  height: 400px;
   background-color: #101010;
   padding: 25px;
-  margin: 25px 0;
+  margin: 25px;
   float: left;
 }
 
@@ -309,7 +309,7 @@ header {
   text-align: center;
 }
 
-a.nav-icon {
+.nav-icon {
   float: right;
   margin: 15px;
   position: relative;
@@ -317,6 +317,11 @@ a.nav-icon {
   border: grey solid 1px;
   border-radius: 25%;
   padding: 10px;
+  transition: background-color ease 0.2s;
+}
+
+.nav-icon:hover {
+  background-color: #252525;
 }
 
 .topnav.responsive {
@@ -482,7 +487,7 @@ a.nav-icon {
     border-bottom: #0066b2 solid 2px;
   }
 
-  a.nav-icon {
+  .nav-icon {
     display: none;
   }
 
@@ -492,6 +497,7 @@ a.nav-icon {
   }
 
   .logo-img {
+    display: inline-block;
     width: 112.5px;
     height: 93px; 
     margin: initial;
@@ -528,16 +534,6 @@ a.nav-icon {
 
   .research-img-wrapper {
     float: right;
-  }
-
-  /********************************/
-  /*        hero bar styles       */
-  /********************************/
-
-  .hero-header-container {
-    width: 300px;
-    height: 400px;
-    margin: 25px;
   }
 
   /********************************/
