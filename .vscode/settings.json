@@ -6,7 +6,7 @@
     "editor.detectIndentation": false,
   },
   "[javascript]": {
-    "editor.tabSize": 4,
+    "editor.tabSize": 2,
     "editor.insertSpaces": true,
     "editor.detectIndentation": false,
   }
