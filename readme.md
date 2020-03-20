@@ -256,4 +256,4 @@ I found the module to be very informative and in depth covering a number of web 
 
 I also think the use of GIT and GitHub for version control and repository management is extremely worthwhile as it's been such a big part of my own experience as a student and as a web developer in industry which other modules tend to miss.
 
-These factors together come to create an assessment which feels in a way reminiscent of actual industry development projects. 
+These factors together come to create an assessment which mimics an actual industry development project to some extent. 
