@@ -252,7 +252,11 @@ Information references are as follows:
 
 ## Module Conclusions
 
-I found the module to be very informative and in depth covering a number of web development elements which either self taught or those with only a basic understanding would not have come across before, including the use of semantic tags,  modern methods of layout styling (eg. flexbox, grid) and how pure javascript can be used to interact with the dom without the use of common frameworks (eg. JQuery). I also found the assessment to be very enjoyable and worthwhile not only for having the opportunity to put use the skills and knowledge gained from the module in a practical sense but also to create a high quality artifact for use in my own personal portfolio of projects which demonstrates my creativity and knowledge of common front end technologies and professional practice. 
+I found the module to be very informative and in depth covering a number of web development elements which either self taught or those with only a basic understanding would not have come across before, including the use of semantic tags,  modern methods of layout styling (eg. flexbox, grid) and how pure javascript can be used to interact with the dom without the use of common frameworks (eg. JQuery). 
+
+As someone who was already fairly competant with front end technologies however I feel that it could have been interesting to investigate HTML5 canvases in a bit more depth as a new form of web animation in lectures or labs. 
+
+I found the assessment to be very enjoyable and worthwhile not only for having the opportunity to put use the skills and knowledge gained from the module in a practical sense but also to create a high quality artifact for use in my own personal portfolio of projects which demonstrates my creativity and knowledge of common front end technologies and professional practice. 
 
 I also think the use of GIT and GitHub for version control and repository management is extremely worthwhile as it's been such a big part of my own experience as a student and as a web developer in industry which other modules tend to miss.
 
