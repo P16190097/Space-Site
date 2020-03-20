@@ -214,6 +214,12 @@ const getWidth = () => {
 
 The CSS validaion service flags `.lvml	Property behavior doesn't exist : url(#default#VML)` as an error however this is coming from a 3rd party [leaflet stylesheet](https://unpkg.com/leaflet@1.6.0/dist/leaflet.css) which I do not have any control over however is necessary in order for the tracker map to function properly and so I believe this error should be ignored.
 
+## Code Validation
+
+All HTML and CSS is validated using w3.orgs validation service. All HTML validates successfully with no errors however some pages such as the ISS history page return the warning `Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections`. Given the context of the page however this is unnecessary to do given the content and format of the section and falls under the main page header. The CSS validates successfully for all pages aside from the ISS tracker page which returns the error mentioned above which is unfortunately out of my control.
+
+All pages do however pass web accessibility tests without error using the WAVE accessibility evaluation tool found [here](https://wave.webaim.org/).
+
 ## References
 
 Information references are as follows:
@@ -246,4 +252,12 @@ Information references are as follows:
 
 ## Module Conclusions
 
-TODO
+I found the module to be very informative and in depth covering a number of web development elements which either self taught or those with only a basic understanding would not have come across before, including the use of semantic tags,  modern methods of layout styling (eg. flexbox, grid) and how pure javascript can be used to interact with the dom without the use of common frameworks (eg. JQuery). 
+
+As someone who was already fairly competant with front end technologies however I feel that it could have been interesting to investigate HTML5 canvases in a bit more depth as a new form of web animation in lectures or labs. 
+
+I found the assessment to be very enjoyable and worthwhile not only for having the opportunity to put use the skills and knowledge gained from the module in a practical sense but also to create a high quality artifact for use in my own personal portfolio of projects which demonstrates my creativity and knowledge of common front end technologies and professional practice. 
+
+I also think the use of GIT and GitHub for version control and repository management is extremely worthwhile as it's been such a big part of my own experience as a student and as a web developer in industry which other modules tend to miss.
+
+These factors together come to create an assessment which mimics an actual industry development project to some extent. 
