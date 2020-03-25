@@ -11,7 +11,7 @@ const getWidth = () => {
     document.documentElement.offsetWidth,
     document.documentElement.clientWidth,
   );
-}
+};
 
 const getHeight = () => {
   return Math.max(
@@ -21,7 +21,7 @@ const getHeight = () => {
     document.documentElement.offsetHeight,
     document.documentElement.clientHeight,
   );
-}
+};
 
 /***********************************************/
 /*   toggle responsive navbar for mobile view  */
@@ -34,7 +34,7 @@ const toggelNavbar = () => {
   } else {
     x.className = "topnav";
   }
-}
+};
 
 document.getElementById("navToggle").addEventListener("click", toggelNavbar);
 
@@ -50,7 +50,7 @@ const setNav = () => {
   else {
     x.className = 'topnav';
   }
-}
+};
 
 setNav();
 window.onresize = () => setNav();

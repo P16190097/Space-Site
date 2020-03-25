@@ -8,15 +8,15 @@ I designed to the web site to be modular in nature where every page shared a bas
 
 ```
 const performHttpGet = async (url, processResp, onFail) => {
-    let response = await fetch(url)
+  let response = await fetch(url)
 
-    if (response.ok) {
-        const result = await response.json()
-        processResp(result);
-    }
-    else {
-        onFail(response);
-    }
+  if (response.ok) {
+    const result = await response.json()
+    processResp(result);
+  }
+  else {
+    onFail(response);
+  }
 };
 ```
 
@@ -28,19 +28,19 @@ const protocol = window.location.protocol !== 'file:' ? window.location.protocol
 const positionUrl = `${protocol}//api.wheretheiss.at/v1/satellites/25544`;
 
 const updateMap = (resp) => {
-    const { latitude, longitude, altitude, velocity } = resp;
+  const { latitude, longitude, altitude, velocity } = resp;
 
-    iss.setLatLng([latitude, longitude]);
-    isscirc.setLatLng([latitude, longitude]);
-    map.panTo([latitude, longitude], animate = true);
+  iss.setLatLng([latitude, longitude]);
+  isscirc.setLatLng([latitude, longitude]);
+  map.panTo([latitude, longitude], animate = true);
 
-    document.getElementById('iss-info').innerHTML = `Latitude: ${latitude}</br>Longitude: ${longitude}</br>Altitude: ${altitude}km</br>Velocity: ${velocity}km/h`;
+  document.getElementById('iss-info').innerHTML = `Latitude: ${latitude}</br>Longitude: ${longitude}</br>Altitude: ${altitude}km</br>Velocity: ${velocity}km/h`;
 
-    setTimeout(() => performHttpGet(positionUrl, updateMap), 5000);
+  setTimeout(() => performHttpGet(positionUrl, updateMap), 5000);
 };
 
 const showError = () => {
-    document.getElementById('iss-info').innerHTML = `Tracker details could not be fetched`;
+  document.getElementById('iss-info').innerHTML = `Tracker details could not be fetched`;
 };
 
 performHttpGet(positionUrl, updateMap, showError);
@@ -52,54 +52,54 @@ Consideration was also taken to convert any code taken from a 3rd party source i
 
 ```
 class Particle {
-    constructor(xPos, yPos) {
-        this.x = Math.random() * w;
-        this.y = Math.random() * h;
-        this.speed = opts.defaultSpeed + Math.random() * opts.variantSpeed;
-        this.directionAngle = Math.floor(Math.random() * 360);
-        this.color = opts.particleColor;
-        this.radius = opts.defaultRadius + Math.random() * opts.variantRadius;
-        this.vector = {
-            x: Math.cos(this.directionAngle) * this.speed,
-            y: Math.sin(this.directionAngle) * this.speed
-        };
-        this.update = () => {
-            this.border();
-            this.x += this.vector.x;
-            this.y += this.vector.y;
-        };
-        this.border = () => {
-            if (this.x >= w || this.x <= 0) {
-                this.vector.x *= -1;
-            }
-            if (this.y >= h || this.y <= 0) {
-                this.vector.y *= -1;
-            }
-            if (this.x > w) this.x = w;
-            if (this.y > h) this.y = h;
-            if (this.x < 0) this.x = 0;
-            if (this.y < 0) this.y = 0;
-        };
-        this.draw = () => {
-            drawArea.beginPath();
-            drawArea.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            drawArea.closePath();
-            drawArea.fillStyle = this.color;
-            drawArea.fill();
-        };
+  constructor(xPos, yPos) {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.speed = opts.defaultSpeed + Math.random() * opts.variantSpeed;
+    this.directionAngle = Math.floor(Math.random() * 360);
+    this.color = opts.particleColor;
+    this.radius = opts.defaultRadius + Math.random() * opts.variantRadius;
+    this.vector = {
+      x: Math.cos(this.directionAngle) * this.speed,
+      y: Math.sin(this.directionAngle) * this.speed
     };
+    this.update = () => {
+      this.border();
+      this.x += this.vector.x;
+      this.y += this.vector.y;
+    };
+    this.border = () => {
+      if (this.x >= w || this.x <= 0) {
+        this.vector.x *= -1;
+      }
+      if (this.y >= h || this.y <= 0) {
+        this.vector.y *= -1;
+      }
+      if (this.x > w) this.x = w;
+      if (this.y > h) this.y = h;
+      if (this.x < 0) this.x = 0;
+      if (this.y < 0) this.y = 0;
+    };
+    this.draw = () => {
+      drawArea.beginPath();
+      drawArea.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      drawArea.closePath();
+      drawArea.fillStyle = this.color;
+      drawArea.fill();
+    };
+  };
 };
 
 const loop = () => {
-    window.requestAnimationFrame(loop);
-    drawArea.clearRect(0, 0, w, h);
-    for (particle of particles) {
-        particle.update();
-        particle.draw();
-    }
-    for (particle of particles) {
-        linkPoints(particle, particles);
-    }
+  window.requestAnimationFrame(loop);
+  drawArea.clearRect(0, 0, w, h);
+  for (particle of particles) {
+    particle.update();
+    particle.draw();
+  }
+  for (particle of particles) {
+    linkPoints(particle, particles);
+  }
 }
 ```
 
@@ -172,24 +172,24 @@ I also ran into issues when setting the correct classes to the navbar container 
 
 ```
 const toggelNavbar = () => {
-    const x = document.getElementById("topnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
+  const x = document.getElementById("topnav");
+  if (x.className === "topnav") {
+      x.className += " responsive";
+  } else {
+      x.className = "topnav";
+  }
 }
 
 document.getElementById("navToggle").addEventListener("click", toggelNavbar);
 
 const setNav = () => {
-    const x = document.getElementById("topnav");
-    if (getWidth() >= 768) {
-        x.className = 'content-width topnav';
-    }
-    else {
-        x.className = 'topnav';
-    }
+  const x = document.getElementById("topnav");
+  if (getWidth() >= 768) {
+      x.className = 'content-width topnav';
+  }
+  else {
+      x.className = 'topnav';
+  }
 }
 
 setNav();
@@ -200,14 +200,14 @@ getWidth() is a function for returning the current width of the view window as s
 
 ```
 const getWidth = () => {
-    return Math.max(
-        document.body.scrollWidth,
-        document.documentElement.scrollWidth,
-        document.body.offsetWidth,
-        document.documentElement.offsetWidth,
-        document.documentElement.clientWidth,
-    );
-}
+  return Math.max(
+    document.body.scrollWidth,
+    document.documentElement.scrollWidth,
+    document.body.offsetWidth,
+    document.documentElement.offsetWidth,
+    document.documentElement.clientWidth,
+  );
+};
 ```
 
 ### Styling 
