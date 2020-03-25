@@ -1,3 +1,4 @@
+"use strict";
 
 /*****************************************************************/
 /*  generic functions for getting current page dimensions in px  */
@@ -75,6 +76,10 @@ const performHttpGet = async (url, processResp, onFail) => {
 /*     html5 canvas header drawing script      */
 /***********************************************/
 
+let w;
+let h;
+let particles = [];
+
 const resizeReset = () => {
   const canvas = document.getElementById('mesh-canvas');
   w = canvasBody.width = canvas.offsetWidth;
@@ -108,7 +113,7 @@ const checkDistance = (x1, y1, x2, y2) => {
 };
 
 const linkPoints = (point1, hubs) => {
-  for (hub of hubs) {
+  for (let hub of hubs) {
     let distance = checkDistance(point1.x, point1.y, hub.x, hub.y);
     let opacity = 1 - distance / opts.linkRadius;
     if (opacity > 0) {
@@ -174,11 +179,11 @@ const setup = () => {
 const loop = () => {
   window.requestAnimationFrame(loop);
   drawArea.clearRect(0, 0, w, h);
-  for (particle of particles) {
+  for (let particle of particles) {
     particle.update();
     particle.draw();
   }
-  for (particle of particles) {
+  for (let particle of particles) {
     linkPoints(particle, particles);
   }
 }
