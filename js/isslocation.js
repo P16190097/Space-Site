@@ -1,3 +1,4 @@
+"use strict";
 /***********************************************/
 /*   script to setup map and initialise plots  */
 /***********************************************/
@@ -40,7 +41,7 @@ const updateMap = (resp) => {
 
   iss.setLatLng([latitude, longitude]);
   isscirc.setLatLng([latitude, longitude]);
-  map.panTo([latitude, longitude], animate = true);
+  map.panTo([latitude, longitude], { animate: true });
 
   document.getElementById('iss-info').innerHTML = `Latitude: ${latitude}</br>Longitude: ${longitude}</br>Altitude: ${altitude}km</br>Velocity: ${velocity}km/h`;
 
