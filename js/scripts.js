@@ -76,10 +76,6 @@ const performHttpGet = async (url, processResp, onFail) => {
 /*     html5 canvas header drawing script      */
 /***********************************************/
 
-let w;
-let h;
-let particles = [];
-
 const resizeReset = () => {
   const canvas = document.getElementById('mesh-canvas');
   w = canvasBody.width = canvas.offsetWidth;
@@ -168,7 +164,6 @@ class Particle {
 };
 
 const setup = () => {
-  particles = [];
   resizeReset();
   for (let i = 0; i < opts.particleAmount; i++) {
     particles.push(new Particle());
@@ -188,9 +183,13 @@ const loop = () => {
   }
 }
 
-const canvasBody = document.getElementById('mesh-canvas'),
-  drawArea = canvasBody.getContext("2d");
-let delay = 200, tid,
-  rgb = opts.lineColor.match(/\d+/g);
+let w;
+let h;
+let particles = [];
+const canvasBody = document.getElementById('mesh-canvas');
+const drawArea = canvasBody.getContext("2d");
+let delay = 200;
+let tid;
+const rgb = opts.lineColor.match(/\d+/g);
 resizeReset();
 setup();
