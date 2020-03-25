@@ -1,6 +1,6 @@
 # CTEC3905 Assignment
 
-This website functions as a record of the history and purpose of the International Space Station (ISS) as well as providing the user with an accurate real life representation of the International Space Stations current location above the earth. I chose this subject as it provided an interesting base to demonstrate my knowledge of front end web design as well as push the limits of what can be accomplished using only HTML5, CSS3 and Javascript (ES6). This web site is in no way affiliated with the North American Space Agency (NASA).
+This website functions as a record of the history and purpose of the International Space Station (ISS) as well as providing the user with an accurate real life representation of the International Space Stations current location above the earth. I chose this subject as it provided an interesting base to demonstrate my knowledge of front end web design as well as push the limits of what can be accomplished using only HTML5, CSS3 and Javascript (ES6). 
 
 ## Design Considerations
 
@@ -237,7 +237,7 @@ Information references are as follows:
 - Documentation for how the map was created as well as as some demo code can be found [here](https://leafletjs.com/examples/quick-start/). 
 - Initial tracker map API code used can be found [here](http://open-notify.org/Open-Notify-API/). 
 - Unmodified script for drawing the canvas animation can be found [here](http://thenewcode.com/1159/Create-a-Dynamic-Point-Mesh-Animation-with-HTML5-Canvas). 
-- Flexbox styles used for positioning the footer can be found [here](https://css-tricks.com/couple-takes-sticky-footer/).
+- Flexbox styles used for positioning the footer can be found [here](https://css-tricks.com/couple-takes-sticky-footer/). 
 
 ### Images
 
