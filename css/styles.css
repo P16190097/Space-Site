@@ -112,10 +112,6 @@ footer {
   background-color: #000;
 }
 
-#mesh-canvas {
-  display:none;
-}
-
 #mapid {
   height: 400px;
 }
@@ -256,24 +252,8 @@ header {
   border-bottom: 1px solid #1d1d1d;
 }
 
-/********************************/
-/*     color styles             */
-/********************************/
-
-.red {
-  color: red;
-}
-
-.blue {
-  color: #0078d3;
-}
-
-.green {
-  color: green;
-}
-
-.gold {
-  color: #daa520;
+#mesh-canvas {
+  display:none;
 }
 
 /********************************/
@@ -310,6 +290,7 @@ header {
 }
 
 .nav-icon {
+  color: #0078d3;
   float: right;
   margin: 15px;
   position: relative;
