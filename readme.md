@@ -48,7 +48,7 @@ performHttpGet(positionUrl, updateMap, showError);
 
 This methodology also made it much more managable to to style the site as I could take advantage of HTML5s semantic tags to style portions of the site directly rather than having a multitude of classes specific to each page instead which inherently becomes much more difficult to maintain. 
 
-Consideration was also taken to convert any code taken from a 3rd party source into its current format (ES5 to ES6 etc). This includes modifying CSS to use CSS3 styles such as flexbox if appropriate and markup to use semantic tags is applicable. A good example of this can be found in the canvas script as the tutorial supplied used outdated ES5 syntax including ES5 function and class notation and older style for loops instead of 'for in' iterators. A small excerpt of the refactored code can be seen below:
+Consideration was also taken to convert any code taken from a 3rd party source into its current format (ES5 to ES6 etc). This includes modifying CSS to use CSS3 styles such as flexbox if appropriate and markup to use semantic tags is applicable. A good example of this can be found in the canvas script as the tutorial supplied used outdated ES5 syntax including ES5 function and class syntax and older style for loops instead of 'for in' iterators. A small excerpt of the refactored code can be seen below:
 
 ```
 class Particle {
