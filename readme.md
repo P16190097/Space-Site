@@ -238,6 +238,7 @@ Information references are as follows:
 - Initial tracker map API code used can be found [here](http://open-notify.org/Open-Notify-API/). 
 - Unmodified script for drawing the canvas animation can be found [here](http://thenewcode.com/1159/Create-a-Dynamic-Point-Mesh-Animation-with-HTML5-Canvas). 
 - Flexbox styles used for positioning the footer can be found [here](https://css-tricks.com/couple-takes-sticky-footer/). 
+- getHeight() and getWidth() functions can be found [here](https://stackoverflow.com/questions/1038727/how-to-get-browser-width-using-javascript-code).
 
 ### Images
 
