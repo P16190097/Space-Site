@@ -151,7 +151,7 @@ footer {
 
 .hero-img {
   min-height: 450px;
-  background: url('../img/lego-zero-g-astronaut-on-the-iss.jpg') no-repeat center center fixed;
+  background: url('../img/nebula.jpg') no-repeat center center fixed;
 }
 
 .hero-header-container {
@@ -188,6 +188,10 @@ footer {
 
 .hero-link:hover {
   background-color: #105bd8;
+}
+
+.floating-img {
+  display: none;
 }
 
 /********************************/
@@ -501,6 +505,52 @@ header {
 
   .research-img-wrapper {
     float: right;
+  }
+
+  .floating-img {
+    display: initial;
+    height: 200px;
+    width: 240px;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    animation: drift 20s infinite ease-in-out, spin 20s infinite linear;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+  @keyframes drift {
+    0% {
+      left: 50%;
+      top: 35%;
+    }
+    20% {
+      left: 52%;
+      top: 32%;
+    }
+    40% {
+      left: 49%;
+      top: 34%;
+    }
+    60% {
+      left: 52%;
+      top: 36%;
+    }
+    80% {
+      left: 53%;
+      top: 37%;
+    }
+    100% {
+      left: 50%;
+      top: 35%;
+    }
   }
 
   /********************************/
