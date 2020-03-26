@@ -33,7 +33,7 @@ const toggelNavbar = () => {
     x.className += " responsive";
   } else {
     x.className = "topnav";
-  }
+  };
 };
 
 document.getElementById("navToggle").addEventListener("click", toggelNavbar);
@@ -49,7 +49,7 @@ const setNav = () => {
   }
   else {
     x.className = 'topnav';
-  }
+  };
 };
 
 setNav();
@@ -60,7 +60,7 @@ window.onresize = () => setNav();
 /***********************************************/
 
 const performHttpGet = async (url, processResp, onFail) => {
-  let response = await fetch(url)
+  let response = await fetch(url);
 
   if (response.ok) {
     const result = await response.json()
@@ -68,7 +68,7 @@ const performHttpGet = async (url, processResp, onFail) => {
   }
   else {
     onFail(response);
-  }
+  };
 };
 
 /***********************************************/
@@ -119,9 +119,9 @@ const linkPoints = (point1, hubs) => {
       drawArea.lineTo(hub.x, hub.y);
       drawArea.closePath();
       drawArea.stroke();
-    }
-  }
-}
+    };
+  };
+};
 
 class Particle {
   constructor(xPos, yPos) {
@@ -143,10 +143,10 @@ class Particle {
     this.border = () => {
       if (this.x >= w || this.x <= 0) {
         this.vector.x *= -1;
-      }
+      };
       if (this.y >= h || this.y <= 0) {
         this.vector.y *= -1;
-      }
+      };
       if (this.x > w) this.x = w;
       if (this.y > h) this.y = h;
       if (this.x < 0) this.x = 0;
@@ -166,9 +166,9 @@ const setup = () => {
   resizeReset();
   for (let i = 0; i < opts.particleAmount; i++) {
     particles.push(new Particle());
-  }
+  };
   window.requestAnimationFrame(loop);
-}
+};
 
 const loop = () => {
   window.requestAnimationFrame(loop);
@@ -176,11 +176,11 @@ const loop = () => {
   for (let particle of particles) {
     particle.update();
     particle.draw();
-  }
+  };
   for (let particle of particles) {
     linkPoints(particle, particles);
-  }
-}
+  };
+};
 
 let w;
 let h;
