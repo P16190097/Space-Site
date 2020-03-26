@@ -1,5 +1,4 @@
 "use strict";
-
 /*****************************************************************/
 /*  generic functions for getting current page dimensions in px  */
 /*****************************************************************/
@@ -34,7 +33,7 @@ const toggelNavbar = () => {
     x.className += " responsive";
   } else {
     x.className = "topnav";
-  }
+  };
 };
 
 document.getElementById("navToggle").addEventListener("click", toggelNavbar);
@@ -50,7 +49,7 @@ const setNav = () => {
   }
   else {
     x.className = 'topnav';
-  }
+  };
 };
 
 setNav();
@@ -60,25 +59,19 @@ window.onresize = () => setNav();
 /*     perform HTTP GET requests via AJAX      */
 /***********************************************/
 
-const performHttpGet = async (url, processResp, onFail) => {
-  let response = await fetch(url)
-
-  if (response.ok) {
-    const result = await response.json()
-    processResp(result);
-  }
-  else {
-    onFail(response);
-  }
+const performHttpGet = (url, processResp, onFail) => {
+  fetch(url).then((response) => {
+    if (!response.ok) {
+      onFail(response);
+      return;
+    };
+    response.json().then((data) => processResp(data));
+  }).catch((error) => onFail(error));
 };
 
 /***********************************************/
 /*     html5 canvas header drawing script      */
 /***********************************************/
-
-let w;
-let h;
-let particles = [];
 
 const resizeReset = () => {
   const canvas = document.getElementById('mesh-canvas');
@@ -124,9 +117,9 @@ const linkPoints = (point1, hubs) => {
       drawArea.lineTo(hub.x, hub.y);
       drawArea.closePath();
       drawArea.stroke();
-    }
-  }
-}
+    };
+  };
+};
 
 class Particle {
   constructor(xPos, yPos) {
@@ -148,10 +141,10 @@ class Particle {
     this.border = () => {
       if (this.x >= w || this.x <= 0) {
         this.vector.x *= -1;
-      }
+      };
       if (this.y >= h || this.y <= 0) {
         this.vector.y *= -1;
-      }
+      };
       if (this.x > w) this.x = w;
       if (this.y > h) this.y = h;
       if (this.x < 0) this.x = 0;
@@ -168,13 +161,12 @@ class Particle {
 };
 
 const setup = () => {
-  particles = [];
   resizeReset();
   for (let i = 0; i < opts.particleAmount; i++) {
     particles.push(new Particle());
-  }
+  };
   window.requestAnimationFrame(loop);
-}
+};
 
 const loop = () => {
   window.requestAnimationFrame(loop);
@@ -182,15 +174,19 @@ const loop = () => {
   for (let particle of particles) {
     particle.update();
     particle.draw();
-  }
+  };
   for (let particle of particles) {
     linkPoints(particle, particles);
-  }
-}
+  };
+};
 
-const canvasBody = document.getElementById('mesh-canvas'),
-  drawArea = canvasBody.getContext("2d");
-let delay = 200, tid,
-  rgb = opts.lineColor.match(/\d+/g);
+let w;
+let h;
+let particles = [];
+const canvasBody = document.getElementById('mesh-canvas');
+const drawArea = canvasBody.getContext("2d");
+let delay = 200;
+let tid;
+const rgb = opts.lineColor.match(/\d+/g);
 resizeReset();
 setup();
