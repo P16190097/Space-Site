@@ -49,6 +49,8 @@ const updateMap = (resp) => {
 };
 
 const showError = () => {
+  map.removeLayer(iss);
+  map.removeLayer(isscirc);
   document.getElementById('iss-info').innerHTML = `Tracker details could not be fetched`;
 };
 
