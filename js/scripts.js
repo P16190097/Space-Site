@@ -60,13 +60,16 @@ window.onresize = () => setNav();
 /***********************************************/
 
 const performHttpGet = async (url, processResp, onFail) => {
-  let response = await fetch(url);
-
-  if (response.ok) {
-    const result = await response.json()
-    processResp(result);
-  }
-  else {
+  try {
+    let response = await fetch(url);
+    if (response.ok) {
+      const result = await response.json()
+      processResp(result);
+    }
+    else {
+      onFail(response);
+    };
+  } catch (error) {
     onFail(response);
   };
 };
