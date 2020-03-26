@@ -248,6 +248,7 @@ Information references are as follows:
 - Image of waving astronaut used in the home page grid, can be found [here](https://www.scienceabc.com/wp-content/uploads/2019/05/Astronauts-wear-oxygen-mask-on-iss-weaer.jpg). 
 - Imgae of NASA logo used in the page header can be found [here](https://www.nanonics.co.il/images/Client_Logos/nasa-logo-min.png). 
 - Icon used for ISS tracker location can be found [here](http://open-notify.org/Open-Notify-API/map/ISSIcon.png). 
+- Space image used in hero header can be found here [here](https://www.esa.int/extension/pillars/design/pillars/images/nebula.jpg).
 
 ## Module Conclusions
 
