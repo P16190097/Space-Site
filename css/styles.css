@@ -418,7 +418,6 @@ header {
   border-radius: 6px;
 }
 
-
 /* TABLET STYLES */
 
 @media screen and (min-width: 768px) {
@@ -513,7 +512,7 @@ header {
     width: 240px;
     position: absolute;
     left: 50%;
-    top: 35%;
+    top: 320px;
     animation: drift 20s infinite ease-in-out, spin 20s infinite linear;
   }
 
@@ -529,27 +528,27 @@ header {
   @keyframes drift {
     0% {
       left: 50%;
-      top: 35%;
+      top: 320px;
     }
     20% {
       left: 52%;
-      top: 32%;
+      top: 305px;
     }
     40% {
       left: 49%;
-      top: 34%;
+      top: 315px;
     }
     60% {
       left: 52%;
-      top: 36%;
+      top: 325px;
     }
     80% {
       left: 53%;
-      top: 37%;
+      top: 330px;
     }
     100% {
       left: 50%;
-      top: 35%;
+      top: 320px;
     }
   }
 
@@ -595,8 +594,6 @@ header {
 
 }
 
-
-
 /* DESKTOP STYLES */
 
 @media screen and (min-width: 1000px) {
@@ -610,6 +607,18 @@ header {
 
   .grid-item-content h1 {
     min-height: 95px;
+  }
+  
+}
+
+/* SUPER WIDE STYLES */
+
+@media (min-height: 1506px) and (min-width: 1921px) {
+
+  /* applies to screens wider than 1921px */
+
+  .hero-img {
+    background: url('../img/nebula.jpg') no-repeat center center;
   }
   
 }
