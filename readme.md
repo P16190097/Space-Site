@@ -156,6 +156,12 @@ footer {
 }
 ```
 
+### Responsive Styling
+
+The website is designed from a mobile first perspeective, utilising media query style breakpoints such as `@media screen and (min-width: 768px)` in order to apply necessary new and overriding styles to elements which require it at larger resolutions including mobile, tablet, desktop and super widescreen 4k. Supporting up to 4k proved to be especially troublesome especially on the home page whose hero banner would be crushed, spanning only roughly half of the maximum page width and the drifting lego man animation would drift instead halfway down the page covering the grid content. 
+
+The issue with with the crushed image was due to some of the properties I had set on it which worked well at lower resolutions. It was fixed to the page using `background-attachment: fixed;` which meant that it slid down to the middle of the page beneath the following content and was only partially visible. I was able to fix the issue by removing the fixed property using a new super widescreen media query breakpoint `@media (min-height: 1506px) and (min-width: 1921px)` so that the image centered itself in the hero header at resolutions with a higher height than 1506px where the picture would be cut off. This however, did not solve the issue of the image not stretching to fit the width of the screen however I found that the trade off for streatching or repeating the image was not worth the drop in image or site quality and so I chose to instad let it fill to its native max-width of 1080px and display grey space the rest of the way.  
+
 ### Javascript
 
 Initially when creating the ISS location tracker I used an API which communicated using HTTP (Hypertext Transfer Protocol). The problem with this came when I attempted to deploy a live instance of the site using Github pages which serves the site via HTTPS (Hypertext Transfer Protocol Secure), an extension of HTTP which utilises TLS (Transport Layer Security) to encrypt communication between the server and the client. This however meant that the site hosted on the server could not request 3rd party resources which are transfered in a non secure manor such as HTTP and so I had to instead had to switch to a different API which communicated via HTTPS as shown below using javascript string interpolation to insert the protocol is given otherwise use HTTPS. 
