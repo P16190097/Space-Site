@@ -621,7 +621,6 @@ header {
   /* applies to screens wider than 1921px */
 
   .hero-img {
-    min-height: 450px;
     background: url('../img/nebula.jpg') repeat center center;
   }
   
