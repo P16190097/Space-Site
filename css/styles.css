@@ -418,7 +418,6 @@ header {
   border-radius: 6px;
 }
 
-
 /* TABLET STYLES */
 
 @media screen and (min-width: 768px) {
@@ -594,8 +593,6 @@ header {
   }
 
 }
-
-
 
 /* DESKTOP STYLES */
 
