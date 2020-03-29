@@ -218,13 +218,110 @@ const getWidth = () => {
 
 This logic could possibly be accomplished to the same effect solely using CSS breakpoints however to demonstrate the fact that element classes can be amended, removed, used in conditional logic or manipulated in some such way, I have chosen to use Javascript to set the layout of the navbar when switching from mobile to desktop views. CSS breakpoints are used to manipulate mobile in every other such case. 
 
-### Styling 
+### CSS Animation 
 
-The CSS validaion service flags `.lvml	Property behavior doesn't exist : url(#default#VML)` as an error however this is coming from a 3rd party [leaflet stylesheet](https://unpkg.com/leaflet@1.6.0/dist/leaflet.css) which I do not have any control over however is necessary in order for the tracker map to function properly and so I believe this error should be ignored.
+To create the animation of the lego figure drifting through space, I wanted to rotate and subtly translate the image of the figure to give the illusion of aimless zero gravity drifting. I first began looking at chaining different transformations together to create the desired effect with the setup below: 
+
+```
+.floating-img {
+  display: initial;
+  height: 200px;
+  width: 240px;
+  position: absolute;
+  left: 50%;
+  top: 320px;
+  animation: drift 40s infinite ease-in-out;
+}
+
+@keyframes drift {
+    0% {
+      transform: translate(0) rotate(0deg);
+    }
+    20% {
+      transform: translate(-40px, 20px) rotate(72deg);
+    }
+    40% {
+      transform: translate(25px, -40px) rotate(144deg);
+    }
+    60% {
+      transform: translate(-30px, 20px) rotate(216deg);
+    }
+    80% {
+      transform: translate(-15px, -30px) rotate(288deg);
+    }
+    100% {
+      transform: translate(0) rotate(360deg);
+    }
+  }
+```
+
+However this created a conflict in where the animation could use only a single animation timing function. The code above uses ease to dictate the style of state changes between keyframes which worked well for the translation transformation but made the rotation somewhat rigid and caused it to stop between keyframes. Alternatively I could use linear which would have made the roatation much smoother but then would also have made the translation more rigid and unnatural.
+
+To remedy this I looked at splitting it into 2 seperate animations with different animations-timing-functions properties and chaining them so that each animation were independant of eachother however in actuality the transform property applied by the animation was being overwritten by either one animation or the other depending on their sequence in the CSS file.
+
+```
+.floating-img {
+  animation: drift 30s infinite ease-in-out, spin 30s infinite linear;
+}
+```
+
+Eventually, I resolved to instead handle the translation by wrapping the image in a wrapper div which I could animate seperately so that when combined the image would appear animated as intended using the final configuration below:
+
+```
+<div class="float-img-wrapper">
+  <img src="img/lego-zero-g-astronaut-on-the-iss.png" alt="Lego astronaut in space" class="floating-img" />
+</div>
+
+.float-img-wrapper {
+  display: initial;
+  position: absolute;
+  left: 50%;
+  top: 320px;
+  animation: drift 40s infinite ease-in-out;
+}
+
+.floating-img {
+  height: 200px;
+  width: 240px;
+  animation: spin 30s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-40px, 30px);
+  }
+  40% {
+    transform: translate(35px, -40px);
+  }
+  60% {
+    transform: translate(-30px, 25px);
+  }
+  80% {
+    transform: translate(25px, -35px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+```
 
 ## Code validation and accessibility testing
 
-All HTML and CSS is validated using w3.orgs validation service. All HTML validates successfully with no errors however some pages such as the ISS history page return the warning `Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections`. Given the context of the page however this is unnecessary to do given the content and format of the section and falls under the main page header. The CSS validates successfully for all pages aside from the ISS tracker page which returns the error mentioned above which is unfortunately out of my control.
+All HTML and CSS is validated using w3.orgs validation service. All HTML validates successfully with no errors however some pages such as the ISS history page return the warning `Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections`. Given the context of the page however this is unnecessary to do given the content and format of the section and falls under the main page header. 
+
+The CSS validaion service flags `.lvml	Property behavior doesn't exist : url(#default#VML)` as an error however this is coming from a 3rd party [leaflet stylesheet](https://unpkg.com/leaflet@1.6.0/dist/leaflet.css) which I do not have any control over however is necessary in order for the tracker map to function properly and so I believe this error should be ignored. Other than this however, all CSS written by myself validates with no errors. 
 
 All Javascript scripts used on the site enforce `"use strict";` to ensure that no errors, syntax or otherwise, go uncaught. Doing this helps to promote good practice by ensuring that all variables are properly declared, aren't being use inappropriately and are properly scoped relative to where they are accessed or manipulated as well as throwing other errors where necessary. Despite this, all scripts used on the site return no errors of any kind. The only scenario in which an error could be returned to the console would be in the event that the 3rd party API used were to fail (e.g. API to go offline).
 
