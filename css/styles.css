@@ -507,13 +507,11 @@ header {
     position: absolute;
     left: 50%;
     top: 320px;
-    animation: drift 40s infinite ease-in-out;
+    animation: drift 50s infinite ease-in-out;
   }
 
   .floating-img {
     display: initial;
-    height: 200px;
-    width: 240px;
     animation: spin 30s infinite linear;
   }
 
