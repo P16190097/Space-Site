@@ -37,7 +37,7 @@ const protocol = window.location.protocol !== 'file:' ? window.location.protocol
 const positionUrl = `${protocol}//api.wheretheiss.at/v1/satellites/25544`;
 
 const updateMap = (resp) => {
-  const { latitude, longitude, altitude, velocity } = resp;
+  const { latitude, longitude, altitude, velocity } = resp; // destructure JSON object
 
   iss.setLatLng([latitude, longitude]);
   isscirc.setLatLng([latitude, longitude]);
