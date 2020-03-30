@@ -86,14 +86,11 @@ main {
   flex: 1 0 auto;
 }
 
-.footer-container {
+footer {
+  flex-shrink: 0;
   padding: 35px;
   background-color: #000;
   color: #fff;
-}
-
-footer {
-  flex-shrink: 0;
 }
 
 .light {
