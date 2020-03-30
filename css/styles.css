@@ -86,14 +86,11 @@ main {
   flex: 1 0 auto;
 }
 
-.footer-container {
+footer {
+  flex-shrink: 0;
   padding: 35px;
   background-color: #000;
   color: #fff;
-}
-
-footer {
-  flex-shrink: 0;
 }
 
 .light {
@@ -506,14 +503,16 @@ header {
     float: right;
   }
 
-  .floating-img {
-    display: initial;
-    height: 200px;
-    width: 240px;
+  .floating-img-wrapper {
     position: absolute;
     left: 50%;
     top: 320px;
-    animation: drift 20s infinite ease-in-out, spin 20s infinite linear;
+    animation: drift 50s infinite ease-in-out;
+  }
+
+  .floating-img {
+    display: initial;
+    animation: spin 30s infinite linear;
   }
 
   @keyframes spin {
@@ -521,34 +520,28 @@ header {
       transform: rotate(0deg);
     }
     to {
-      transform: rotate(359deg);
+      transform: rotate(360deg);
     }
   }
 
   @keyframes drift {
     0% {
-      left: 50%;
-      top: 320px;
+      transform: translate(0);
     }
     20% {
-      left: 52%;
-      top: 305px;
+      transform: translate(-40px, 30px);
     }
     40% {
-      left: 49%;
-      top: 315px;
+      transform: translate(35px, -40px);
     }
     60% {
-      left: 52%;
-      top: 325px;
+      transform: translate(-30px, 25px);
     }
     80% {
-      left: 53%;
-      top: 330px;
+      transform: translate(25px, -35px);
     }
     100% {
-      left: 50%;
-      top: 320px;
+      transform: translate(0);
     }
   }
 
