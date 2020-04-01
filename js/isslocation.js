@@ -32,9 +32,7 @@ isscirc.setRadius(500000);
 
 // API docs: https://wheretheiss.at/w/developer
 
-const protocol = window.location.protocol !== 'file:' ? window.location.protocol : 'https:';
-
-const positionUrl = `${protocol}//api.wheretheiss.at/v1/satellites/25544`;
+const positionUrl = `https://api.wheretheiss.at/v1/satellites/25544`;
 
 const updateMap = (resp) => {
   const { latitude, longitude, altitude, velocity } = resp; // destructure JSON object
