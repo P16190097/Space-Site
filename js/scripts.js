@@ -113,7 +113,7 @@ const linkPoints = (point1, hubs) => {
 };
 
 class Particle {
-  constructor(xPos, yPos) {
+  constructor() {
     this.x = Math.random() * w;
     this.y = Math.random() * h;
     this.speed = opts.defaultSpeed + Math.random() * opts.variantSpeed;
