@@ -50,7 +50,7 @@ Consideration was also taken to convert any code taken from a 3rd party source i
 
 ```
 class Particle {
-  constructor(xPos, yPos) {
+  constructor() {
     this.x = Math.random() * w;
     this.y = Math.random() * h;
     this.speed = opts.defaultSpeed + Math.random() * opts.variantSpeed;
@@ -61,30 +61,33 @@ class Particle {
       x: Math.cos(this.directionAngle) * this.speed,
       y: Math.sin(this.directionAngle) * this.speed
     };
-    this.update = () => {
-      this.border();
-      this.x += this.vector.x;
-      this.y += this.vector.y;
+  };
+
+  update = () => {
+    this.border();
+    this.x += this.vector.x;
+    this.y += this.vector.y;
+  };
+
+  border = () => {
+    if (this.x >= w || this.x <= 0) {
+      this.vector.x *= -1;
     };
-    this.border = () => {
-      if (this.x >= w || this.x <= 0) {
-        this.vector.x *= -1;
-      }
-      if (this.y >= h || this.y <= 0) {
-        this.vector.y *= -1;
-      }
-      if (this.x > w) this.x = w;
-      if (this.y > h) this.y = h;
-      if (this.x < 0) this.x = 0;
-      if (this.y < 0) this.y = 0;
+    if (this.y >= h || this.y <= 0) {
+      this.vector.y *= -1;
     };
-    this.draw = () => {
-      drawArea.beginPath();
-      drawArea.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      drawArea.closePath();
-      drawArea.fillStyle = this.color;
-      drawArea.fill();
-    };
+    if (this.x > w) this.x = w;
+    if (this.y > h) this.y = h;
+    if (this.x < 0) this.x = 0;
+    if (this.y < 0) this.y = 0;
+  };
+
+  draw = () => {
+    drawArea.beginPath();
+    drawArea.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    drawArea.closePath();
+    drawArea.fillStyle = this.color;
+    drawArea.fill();
   };
 };
 
@@ -179,24 +182,15 @@ I also ran into issues when setting the correct classes to the navbar container 
 ```
 const toggelNavbar = () => {
   const x = document.getElementById("topnav");
-  if (x.className === "topnav") {
-      x.className += " responsive";
-  } else {
-      x.className = "topnav";
-  }
-}
+  x.classList.toggle('responsive');
+};
 
 document.getElementById("navToggle").addEventListener("click", toggelNavbar);
 
 const setNav = () => {
   const x = document.getElementById("topnav");
-  if (getWidth() >= 768) {
-      x.className = 'content-width topnav';
-  }
-  else {
-      x.className = 'topnav';
-  }
-}
+  getWidth() >= 768 ? x.className = 'content-width topnav' : x.className = 'topnav';
+};
 
 setNav();
 window.onresize = () => setNav();
