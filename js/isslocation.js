@@ -24,7 +24,7 @@ const ISSIcon = L.icon({
 
 const drawPolyLine = (prevLoc, newLoc) => {
   const latlongs = [prevLoc, newLoc];
-  const polyline = new L.Polyline(latlongs, {
+  new L.Polyline(latlongs, {
     color: '#000',
     opacity: 1,
     weight: 1,
