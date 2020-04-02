@@ -21,24 +21,29 @@ const performHttpGet = (url, processResp, onFail) => {
 Which can then be called from any other script embedded on the site which is then done by a separate script present only on the tracker page as shown below:
 
 ```
-const protocol = window.location.protocol !== 'file:' ? window.location.protocol : 'https:';
-
-const positionUrl = `${protocol}//api.wheretheiss.at/v1/satellites/25544`;
+const positionUrl = `https://api.wheretheiss.at/v1/satellites/25544`;
 
 const updateMap = (resp) => {
-  const { latitude, longitude, altitude, velocity } = resp;
+  const { latitude, longitude, altitude, velocity } = resp; // destructure JSON object
+
+  const { lat, lng } = iss.getLatLng();
+  if (lat !== 0 && lng !== 0) {
+    drawPolyLine([lat, lng], [latitude, longitude]);
+  }
 
   iss.setLatLng([latitude, longitude]);
   isscirc.setLatLng([latitude, longitude]);
-  map.panTo([latitude, longitude], animate = true);
+  map.panTo([latitude, longitude], { animate: true });
 
   document.getElementById('iss-info').innerHTML = `Latitude: ${latitude}</br>Longitude: ${longitude}</br>Altitude: ${altitude}km</br>Velocity: ${velocity}km/h`;
 
-  setTimeout(() => performHttpGet(positionUrl, updateMap), 5000);
+  setTimeout(() => performHttpGet(positionUrl, updateMap, showError), 5000);
 };
 
 const showError = () => {
-  document.getElementById('iss-info').innerHTML = `Tracker details could not be fetched`;
+  map.removeLayer(iss);
+  map.removeLayer(isscirc);
+  document.getElementById('iss-info').innerHTML = `Tracker details could not be fetched. Please try reloading the page.`;
 };
 
 performHttpGet(positionUrl, updateMap, showError);
@@ -169,15 +174,9 @@ Due to a lack of physical resources (e.g. high resolution monitor) the web site 
 
 ### Javascript
 
-Initially when creating the ISS location tracker I used an API which communicated using HTTP (Hypertext Transfer Protocol). The problem with this came when I attempted to deploy a live instance of the site using GitHub pages which serves the site via HTTPS (Hypertext Transfer Protocol Secure), an extension of HTTP which utilises TLS (Transport Layer Security) to encrypt communication between the server and the client. This however meant that the site hosted on the server could not request 3rd party resources which are transferred in a non secure manor such as HTTP and so I had to instead had to switch to a different API which communicated via HTTPS as shown below using JavaScript string interpolation to insert the protocol is given otherwise use HTTPS.
+Initially when creating the ISS location tracker I used an API which communicated using HTTP (Hypertext Transfer Protocol). The problem with this came when I attempted to deploy a live instance of the site using GitHub pages which serves content via HTTPS (Hypertext Transfer Protocol Secure), an extension of HTTP which utilises TLS (Transport Layer Security) to encrypt communication between the server and the client. This however meant that the site hosted on the server could not request 3rd party resources which are transferred in a non secure manor such as HTTP and so I had to instead had to switch to a different API which also communicated via HTTPS.
 
-```
-const protocol = window.location.protocol !== 'file:' ? window.location.protocol : 'https:';
-
-const positionUrl = `${protocol}//api.wheretheiss.at/v1/satellites/25544`;
-```
-
-I also ran into issues when setting the correct classes to the navbar container should the screen dimensions switch between desktop and mobile views using code derived from the responsive navigation bar from w3schools. Previously the navbar would break the constraints of its parent container sliding to the far left of the page as well as fail to open the navbar should the user click the link to open the sliding nav bar in mobile view for the first time however the nav bar would still open should the user click the link a subsequent time. Neither of these behaviours were intended and so had to be remedied using the following logic:
+I also ran into issues when setting the correct classes to the navbar container should the screen dimensions switch between desktop and mobile views using code derived from the responsive navigation bar from w3schools. Previously the navbar would break the constraints of its parent container sliding to the far left of the page as well as fail to open the navbar should the user click the link to open the sliding nav bar in mobile view for the first time however the nav bar would still open should the user click the link a subsequent time. Neither of these behaviours were intended and so had to be remedied using the following logic: 
 
 ```
 const toggelNavbar = () => {
