@@ -7,14 +7,15 @@ This website functions as a record of the history and purpose of the Internation
 I designed to the web site to be modular in nature where every page shared a base layout where the main content of the page was easily swappable between any page. This design methodology would make maintenance, modification and development much more manageable as any changes to the script or styles would impact each page in the same way. I also took a similar approach when writing the sites JavaScript by refactoring generic reusable functions into the main site script available from any page then calling them when needed from page specific scripts. A good example of this would be how the function I wrote to fetch from 3rd party APIs works. The main script contains the function below:
 
 ```
-const performHttpGet = (url, processResp, onFail) => {
-  fetch(url).then((response) => {
-    if (!response.ok) {
-      onFail(response);
-      return;
-    };
-    response.json().then((data) => processResp(data));
-  }).catch((error) => onFail(error));
+const performHttpGet = async (url, processResp, onFail) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    processResp(data);
+  }
+  catch (error) {
+    onFail(error);
+  }
 };
 ```
 
@@ -270,7 +271,7 @@ Eventually, I resolved to instead handle the translation by wrapping the image i
   position: absolute;
   left: 50%;
   top: 320px;
-  animation: drift 40s infinite ease-in-out;
+  animation: drift 100s infinite ease-in-out;
 }
 
 .floating-img {
@@ -293,16 +294,16 @@ Eventually, I resolved to instead handle the translation by wrapping the image i
     transform: translate(0);
   }
   20% {
-    transform: translate(-40px, 30px);
+    transform: translate(-80px, 60px);
   }
   40% {
-    transform: translate(35px, -40px);
+    transform: translate(70px, 80px);
   }
   60% {
-    transform: translate(-30px, 25px);
+    transform: translate(-60px, -50px);
   }
   80% {
-    transform: translate(25px, -35px);
+    transform: translate(60px, -70px);
   }
   100% {
     transform: translate(0);
