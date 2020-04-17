@@ -270,7 +270,7 @@ Eventually, I resolved to instead handle the translation by wrapping the image i
   position: absolute;
   left: 50%;
   top: 320px;
-  animation: drift 40s infinite ease-in-out;
+  animation: drift 100s infinite ease-in-out;
 }
 
 .floating-img {
@@ -293,16 +293,16 @@ Eventually, I resolved to instead handle the translation by wrapping the image i
     transform: translate(0);
   }
   20% {
-    transform: translate(-40px, 30px);
+    transform: translate(-80px, 60px);
   }
   40% {
-    transform: translate(35px, -40px);
+    transform: translate(70px, 80px);
   }
   60% {
-    transform: translate(-30px, 25px);
+    transform: translate(-60px, -50px);
   }
   80% {
-    transform: translate(25px, -35px);
+    transform: translate(60px, -70px);
   }
   100% {
     transform: translate(0);
