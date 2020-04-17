@@ -7,14 +7,15 @@ This website functions as a record of the history and purpose of the Internation
 I designed to the web site to be modular in nature where every page shared a base layout where the main content of the page was easily swappable between any page. This design methodology would make maintenance, modification and development much more manageable as any changes to the script or styles would impact each page in the same way. I also took a similar approach when writing the sites JavaScript by refactoring generic reusable functions into the main site script available from any page then calling them when needed from page specific scripts. A good example of this would be how the function I wrote to fetch from 3rd party APIs works. The main script contains the function below:
 
 ```
-const performHttpGet = (url, processResp, onFail) => {
-  fetch(url).then((response) => {
-    if (!response.ok) {
-      onFail(response);
-      return;
-    };
-    response.json().then((data) => processResp(data));
-  }).catch((error) => onFail(error));
+const performHttpGet = async (url, processResp, onFail) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    processResp(data);
+  }
+  catch (error) {
+    onFail(error);
+  }
 };
 ```
 
