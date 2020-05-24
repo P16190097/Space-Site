@@ -75,8 +75,8 @@ const opts = {
   particleColor: "rgb(200,200,200)",
   lineColor: "rgb(200,200,200)",
   particleAmount: 7,
-  defaultSpeed: 0.25,
-  variantSpeed: 0.25,
+  defaultSpeed: 0.15,
+  variantSpeed: 0.15,
   defaultRadius: 2,
   variantRadius: 2,
   linkRadius: 200,
@@ -97,21 +97,21 @@ const checkDistance = (x1, y1, x2, y2) => {
   return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 };
 
-const linkPoints = (point1, hubs) => {
-  for (let hub of hubs) {
-    let distance = checkDistance(point1.x, point1.y, hub.x, hub.y);
-    let opacity = 1 - distance / opts.linkRadius;
-    if (opacity > 0) {
-      drawArea.lineWidth = 0.5;
-      drawArea.strokeStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`;
-      drawArea.beginPath();
-      drawArea.moveTo(point1.x, point1.y);
-      drawArea.lineTo(hub.x, hub.y);
-      drawArea.closePath();
-      drawArea.stroke();
-    };
-  };
-};
+// const linkPoints = (point1, hubs) => {
+//   for (let hub of hubs) {
+//     let distance = checkDistance(point1.x, point1.y, hub.x, hub.y);
+//     let opacity = 1 - distance / opts.linkRadius;
+//     if (opacity > 0) {
+//       drawArea.lineWidth = 0.5;
+//       drawArea.strokeStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`;
+//       drawArea.beginPath();
+//       drawArea.moveTo(point1.x, point1.y);
+//       drawArea.lineTo(hub.x, hub.y);
+//       drawArea.closePath();
+//       drawArea.stroke();
+//     };
+//   };
+// };
 
 class Particle {
   constructor() {
@@ -170,9 +170,9 @@ const loop = () => {
     particle.update();
     particle.draw();
   };
-  for (let particle of particles) {
-    linkPoints(particle, particles);
-  };
+  // for (let particle of particles) {
+  //   linkPoints(particle, particles);
+  // };
 };
 
 let w;
