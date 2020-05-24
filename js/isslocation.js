@@ -16,7 +16,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(map);
 
 const ISSIcon = L.icon({
-  iconUrl: '../2019-20-P16190097/img/ISSIcon.png',
+  iconUrl: './img/ISSIcon.png',
   iconSize: [50, 30],
   iconAnchor: [25, 15],
   popupAnchor: [50, 25],
